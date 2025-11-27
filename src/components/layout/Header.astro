@@ -1,44 +1,43 @@
 ---
 // src/components/layout/Header.astro
-import { SITE_NAME, NAV_LINKS } from '@/lib/constants'
+import { SITE_NAME, NAV_LINKS } from "@/lib/constants";
+import LogoPrimary from "../logo/LogoPrimary.astro";
 
-const currentPath = Astro.url.pathname
+const currentPath = Astro.url.pathname;
 ---
 
-<header class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-100">
-  <nav class="container mx-auto px-4 py-4" aria-label="Navigation principale">
+<header class="bg-white sticky top-0 z-50">
+  <nav class="container mx-auto px-4 py-3" aria-label="Navigation principale">
     <div class="flex items-center justify-between">
-      
       <!-- Logo -->
-      <a 
-        href="/" 
+      <a
+        href="/"
         class="text-2xl font-bold text-gray-900 hover:text-blue-600 transition-colors"
         aria-label="Retour à l'accueil"
       >
-        {SITE_NAME}
+        <LogoPrimary />
       </a>
-      
+
       <!-- Navigation Desktop -->
-      <ul class="hidden md:flex items-center gap-6">
-        {NAV_LINKS.map(link => (
-          <li>
-            <a 
-              href={link.href}
-              class={`font-medium transition-colors ${
-                currentPath === link.href
-                  ? 'text-blue-600 border-b-2 border-blue-600 pb-1'
-                  : 'text-gray-600 hover:text-blue-600'
-              }`}
-              aria-current={currentPath === link.href ? 'page' : undefined}
-            >
-              {link.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-      
+      <div class="flex flex-row items-center gap-x-2">
+        <svg
+          width="7"
+          height="7"
+          viewBox="0 0 7 7"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0.5 6.5H6.5M0.5 0.5H6.5M0.5 3.5H6.5"
+            stroke="#400707"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
+        <span class="text-secondary">Menu</span>
+      </div>
+
       <!-- Mobile Menu Button -->
-      <button 
+      <!-- <button 
         class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
         aria-label="Ouvrir le menu"
         aria-expanded="false"
@@ -47,12 +46,11 @@ const currentPath = Astro.url.pathname
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
-      </button>
-      
+      </button> -->
     </div>
-    
+
     <!-- Mobile Menu (hidden by default) -->
-    <div 
+    <!-- <div 
       class="hidden md:hidden mt-4 pb-4"
       id="mobile-menu"
       role="navigation"
@@ -75,19 +73,19 @@ const currentPath = Astro.url.pathname
           </li>
         ))}
       </ul>
-    </div>
+    </div> -->
   </nav>
 </header>
 
 <script>
   // Toggle mobile menu
-  const button = document.getElementById('mobile-menu-button')
-  const menu = document.getElementById('mobile-menu')
-  
-  button?.addEventListener('click', () => {
-    const isExpanded = button.getAttribute('aria-expanded') === 'true'
-    
-    button.setAttribute('aria-expanded', String(!isExpanded))
-    menu?.classList.toggle('hidden')
-  })
+  const button = document.getElementById("mobile-menu-button");
+  const menu = document.getElementById("mobile-menu");
+
+  button?.addEventListener("click", () => {
+    const isExpanded = button.getAttribute("aria-expanded") === "true";
+
+    button.setAttribute("aria-expanded", String(!isExpanded));
+    menu?.classList.toggle("hidden");
+  });
 </script>

@@ -1,0 +1,99 @@
+---
+// src/components/HeroEngagement.astro
+---
+
+<section class="relative min-h-[600px] bg-white">
+  <div class="container mx-auto pt-4 pb-16">
+    <div class="flex flex-row gap-12 justify-between items-center">
+      <!-- Left Section - Engagement -->
+      <div class="space-y-8 w-[30%]">
+        <h1 class="text-5xl lg:text-6xl font-bold text-[#8B0000] leading-tight">
+          La force de l'engagement
+        </h1>
+
+        <p class="text-gray-700 text-lg max-w-md">
+          Culpa iste impedit alias rem at<br />
+          eum porro amet consequatur<br />
+          neque quibusdam
+        </p>
+
+        <button
+          class="bg-[#C84747] hover:bg-[#A83939] text-white px-8 py-3 rounded-full font-medium transition-colors shadow-md"
+        >
+          <span class="flex items-center gap-2">
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              ></path>
+            </svg>
+            contacter vos élus
+          </span>
+        </button>
+      </div>
+
+      <div
+        class="w-[70%] aspect-[16/10] bg-image relative rounded-md overflow-hidden shadow-2xl"
+      >
+        <!-- e-FO Card Overlay -->
+        <div class="relative p-4 flex items-center justify-end h-full">
+          <div
+            class="bg-gradient-to-br bg-primary text-white rounded-md px-7 py-4 shadow-2xl w-[318px] h-full"
+          >
+            <h2 class="text-6xl text-secondary font-bold mb-2">e-FO</h2>
+
+            <p class="text-white/90 mb-1 leading-none">
+              La plateforme sécurisée où retrouver toutes vos informations
+              syndicale.
+            </p>
+
+            <ul class="space-y-3 mb-8">
+              {
+                [
+                  "Accord d'entreprise",
+                  "Py de CSE",
+                  "Webinaires",
+                  "Formations",
+                  "Référent expert",
+                  "Levée de freins",
+                ].map((el) => (
+                  <li class="flex items-center gap-x-2 p-0 m-0">
+                    <span class="text-white/80 h-fit">•</span>
+                    <span class="text-sm leading-none">{el}</span>
+                  </li>
+                ))
+              }
+            </ul>
+
+            <button
+              class="bg-gray-900 hover:bg-black text-white px-4 py-1 rounded-3xl font-small transition-colors w-fit shadow-lg"
+            >
+              Mon compte e-FO
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .bg-image {
+    background-image: url("../../public/images/hero.jpg");
+    background-repeat: repeat;
+    background-size: cover;
+  }
+  @media (max-width: 1023px) {
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+</style>

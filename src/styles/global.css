@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
 @import "tailwindcss";
 
 @plugin "tailwindcss-animate";
@@ -8,8 +7,6 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-Figtree: "Figtree";
-  --font-display: "Figtree", sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
