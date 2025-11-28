@@ -1,0 +1,33 @@
+---
+import type { JSX } from "astro/jsx-runtime";
+
+type Color = "primary" | "secondary";
+type Variant = "contained" | "outlined";
+interface Props extends JSX.ButtonHTMLAttributes {
+  color?: Color;
+  variant?: Variant;
+}
+const {
+  color = "primary",
+  variant = "contained",
+  class: className,
+  ...rest
+} = Astro.props;
+const classes: Record<Color, Record<Variant, string>> = {
+  primary: {
+    contained: "bg-primary text-primary-foreground",
+    outlined: "border border-primary text-primary",
+  },
+  secondary: {
+    contained: "bg-secondary text-secondary-foreground",
+    outlined: "border border-secondary text-secondary",
+  },
+};
+---
+
+<button
+  {...rest}
+  class={`${classes[color][variant]} px-4 py-1 rounded-3xl font-[700] transition-shadow w-fit hover:shadow-lg flex flex-row items-center gap-x-1 ${className}`}
+>
+  <slot />
+</button>

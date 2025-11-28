@@ -1,9 +1,11 @@
 ---
+import Button from "../ui/Button.astro";
+
 // src/components/HeroEngagement.astro
 ---
 
 <section class="bg-white">
-  <div class="container mx-auto pt-4 pb-16">
+  <div class="pt-4 pb-16">
     <div class="flex flex-row gap-12 justify-between items-center">
       <!-- Left Section - Engagement -->
       <div class="w-[30%] flex flex-col jusfity-between h-[full] gap-y-8">
@@ -22,9 +24,7 @@
             neque quibusdam
           </p>
         </div>
-        <button
-          class="bg-primary w-fit text-white px-3 py-2 rounded-full font-medium transition-shadow hover:shadow-md"
-        >
+        <Button>
           <span class="flex items-center gap-2">
             <svg
               class="w-5 h-5"
@@ -41,7 +41,7 @@
             </svg>
             contacter vos élus
           </span>
-        </button>
+        </Button>
       </div>
 
       <div
@@ -77,11 +77,7 @@
               }
             </ul>
 
-            <button
-              class="bg-secondary text-white px-4 py-1 rounded-3xl font-small transition-shadow w-fit hover:shadow-lg"
-            >
-              Mon compte e-FO
-            </button>
+            <Button color="secondary"> Mon compte e-FO </Button>
           </div>
         </div>
       </div>
