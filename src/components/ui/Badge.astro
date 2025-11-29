@@ -3,7 +3,7 @@ import type { JSX } from "astro/jsx-runtime";
 
 type Color = "primary" | "secondary";
 type Variant = "contained" | "outlined";
-interface Props extends JSX.ButtonHTMLAttributes {
+interface Props extends JSX.HtmlHTMLAttributes {
   color?: Color;
   variant?: Variant;
 }
@@ -25,9 +25,9 @@ const classes: Record<Color, Record<Variant, string>> = {
 };
 ---
 
-<button
+<span
   {...rest}
-  class={`inline-flex items-center justify-center gap-2 whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 ${classes[color][variant]} px-4 py-1 rounded-3xl font-[700] transition-shadow w-fit hover:shadow-lg flex flex-row items-center gap-x-1 ${className}`}
+  class={`inline-flex items-center justify-center gap-2 whitespace-nowrap ${classes[color][variant]} px-4 py-1 rounded-3xl font-[700] flex flex-row items-center gap-x-1 ${className}`}
 >
   <slot />
-</button>
+</span>
