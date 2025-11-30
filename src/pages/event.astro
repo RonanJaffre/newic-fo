@@ -1,15 +1,13 @@
 ---
 import Layout from "../components/layout/Layout.astro";
-import HeroEngagement from "@/components/home/HeroEngagement.astro";
 import Partner from "@/components/home/Partner.astro";
-import News from "@/components/home/News.astro";
 import Region from "@/components/home/Region.astro";
-import Representatives from "@/components/worker/Representatives.astro";
+import EventsList from "@/components/events/EventsList.astro";
 
 // Récupération des articles
 ---
 
-<Layout title="Home" description="">
+<Layout title="Événements" description="Découvrez les prochains événements">
   <section class="mt-4 mb-16 bg-white max-h-[264px]">
     <div class="">
       <div class="flex flex-row gap-12 justify-between items-center">
@@ -19,7 +17,7 @@ import Representatives from "@/components/worker/Representatives.astro";
             <h1
               class="text-5xl lg:text-8xl font-bold text-secondary leading-none whitespace-nowrap z-2 relative"
             >
-              Nos représentants
+              Evènements à venir
             </h1>
           </div>
         </div>
@@ -32,7 +30,7 @@ import Representatives from "@/components/worker/Representatives.astro";
   </section>
   <Partner />
   <Region />
-  <Representatives />
+  <EventsList />
 </Layout>
 
 <style>
