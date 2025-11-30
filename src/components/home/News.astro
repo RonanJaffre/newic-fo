@@ -1,19 +1,9 @@
 ---
+import type { Article } from "@/types";
 import Button from "../ui/Button.astro";
+import { getAllNews } from "@/lib/wordpress";
 
 // src/components/home/News.astro
-
-interface Article {
-  id: string;
-  category: string;
-  date: string;
-  readTime: string;
-  title: string;
-  excerpt: string;
-  image: string;
-  link: string;
-  badge?: "À la une" | "Dossier";
-}
 
 interface Event {
   date: string;
@@ -32,56 +22,8 @@ const featuredArticle: Article = {
   image: "/images/articles/featured.jpg",
   link: "/blog/article-1",
   badge: "Dossier",
+  content: "",
 };
-
-const articles: Article[] = [
-  {
-    id: "2",
-    category: "Bouygues Telecom",
-    date: "03 novembre 2025",
-    readTime: "12 min",
-    title: "Titre article",
-    excerpt:
-      "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam fa...",
-    image: "/images/articles/article-2.jpg",
-    link: "/blog/article-2",
-    badge: "À la une",
-  },
-  {
-    id: "3",
-    category: "Bouygues Telecom",
-    date: "03 novembre 2025",
-    readTime: "12 min",
-    title: "Titre article",
-    excerpt:
-      "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam fa...",
-    image: "/images/articles/article-3.jpg",
-    link: "/blog/article-3",
-    badge: "Dossier",
-  },
-  {
-    id: "4",
-    category: "Bouygues Telecom",
-    date: "03 novembre 2025",
-    readTime: "12 min",
-    title: "Titre article",
-    excerpt:
-      "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam fa...",
-    image: "/images/articles/article-4.jpg",
-    link: "/blog/article-4",
-  },
-  {
-    id: "5",
-    category: "Bouygues Telecom",
-    date: "03 novembre 2025",
-    readTime: "12 min",
-    title: "Titre article",
-    excerpt:
-      "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam fa...",
-    image: "/images/articles/article-5.jpg",
-    link: "/blog/article-5",
-  },
-];
 
 const upcomingEvents: Event[] = [
   {
@@ -97,6 +39,8 @@ const upcomingEvents: Event[] = [
     title: "Titre d'évènement sur plusieurs lignes",
   },
 ];
+
+const articles = await getAllNews(6);
 ---
 
 <section class="py-16">

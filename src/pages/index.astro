@@ -1,19 +1,11 @@
 ---
 import Layout from "../components/layout/Layout.astro";
-import FeaturedArticle from "../components/FeaturedArticle.astro";
-import PostCard from "../components/PostCard.astro";
-import { getAllPosts } from "../lib/wordpress";
-import { env } from "@/config/env";
 import HeroEngagement from "@/components/home/HeroEngagement.astro";
 import Partner from "@/components/home/Partner.astro";
 import News from "@/components/home/News.astro";
 import Region from "@/components/home/Region.astro";
 
 // Récupération des articles
-const posts = await getAllPosts(7);
-const featuredPost = posts[0];
-const highlightedPosts = posts.slice(1, 4); // 3 articles mis en avant
-const recentPosts = posts.slice(4); // Articles récents
 ---
 
 <Layout title="Home" description="">

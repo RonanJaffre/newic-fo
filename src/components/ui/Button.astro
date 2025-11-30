@@ -15,12 +15,16 @@ const {
 } = Astro.props;
 const classes: Record<Color, Record<Variant, string>> = {
   primary: {
-    contained: "bg-primary text-primary-foreground",
-    outlined: "border border-primary text-primary",
+    contained:
+      "bg-primary text-primary-foreground hover:border hover:border-primary hover:bg-transparent hover:text-primary",
+    outlined:
+      "border border-primary text-primary hover:bg-primary hover:text-primary-foreground",
   },
   secondary: {
-    contained: "bg-secondary text-secondary-foreground",
-    outlined: "border border-secondary text-secondary",
+    contained:
+      "bg-secondary text-secondary-foreground hover:border hover:border-secondary hover:text-secondary",
+    outlined:
+      "border border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground",
   },
 };
 ---

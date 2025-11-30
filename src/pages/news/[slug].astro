@@ -1,0 +1,132 @@
+---
+import ArticleDetail from "@/components/article/ArticleDetail.astro";
+import Layout from "@/components/layout/Layout.astro";
+import Badge from "@/components/ui/Badge.astro";
+import { getAllNews } from "@/lib/wordpress";
+import { getNewsBySlug } from "@/lib/wordpress";
+
+// Astro component skeleton
+
+export async function getStaticPaths() {
+  const posts = await getAllNews(); // Récupère tous les articles
+  return posts.map((post) => ({
+    params: { slug: post.slug }, // Définit les slugs pour les routes dynamiques
+  }));
+}
+
+const { slug } = Astro.params; // Récupère le slug depuis l'URL
+const post = await getNewsBySlug(slug ?? "");
+
+if (!post) {
+  throw new Error(`Article non trouvé pour le slug : ${slug}`);
+}
+
+const { category, date, image, title, content, tags, cover, tagDescription } =
+  post;
+---
+
+<Layout
+  title="Praesent neque libero - Exemple d'article"
+  description="Exemple d'article avec contenu HTML riche"
+>
+  <div class="container mx-auto max-w-5xl">
+    <div class="w-full text-[#2A2A2A]">
+      <!-- HEADER TITLE -->
+      <div class="w-full pt-10 pb-1">
+        <h1 class="text-3xl font-bold">{title}</h1>
+        <div class="w-full flex flex-row justify-between">
+          <p class="text-sm text-gray-500 mt-1">Actualités</p>
+          <p class="text-sm text-gray-500 mt-1">{date}</p>
+        </div>
+      </div>
+
+      <!-- MAIN IMAGE -->
+      <div class="">
+        <img
+          src={cover}
+          alt="cover"
+          class="w-full h-[480px] object-cover rounded-xl"
+        />
+      </div>
+
+      <!-- TAGS + SHARE -->
+      <div class="mx-auto flex items-center justify-between mt-4">
+        <div>
+          <div class="flex gap-2 flex-wrap">
+            {
+              (tags ?? []).map((tag) => (
+                <Badge color="primary" class="rounded-full text-sm">
+                  {tag}
+                </Badge>
+              ))
+            }
+          </div>
+          <span class="py-2 text-red-700 rounded-full text-sm">
+            {tagDescription}
+          </span>
+        </div>
+        <div
+          class="flex flex-col border border-red p-3 rounded-lg text-sm text-gray-600"
+        >
+          <span class="py-2 text-red-700 rounded-full text-sm">
+            Sommaire :
+          </span>
+          <span class="py-2 rounded-full text-sm">
+            Phasellus et pulvinar libero. Vivamus non ultrices metus. In
+            faucibus nec urna ut tristique. Duis ac aliquam mauris.
+          </span>
+          <!-- Partager l’article
+          <div class="flex gap-3 mt-2 text-xl">
+            <i class="ri-facebook-circle-fill cursor-pointer"></i>
+            <i class="ri-twitter-x-fill cursor-pointer"></i>
+            <i class="ri-mail-fill cursor-pointer"></i>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <div class="py-16">
+      <ArticleDetail
+        title={title}
+        category={category}
+        date={date}
+        content={content ?? ""}
+        author={{
+          name: "Auteur de l'article",
+        }}
+      />
+    </div>
+    <div class="w-full bg-[#F4EDE7] mt-20 py-10">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 px-6">
+        <div
+          class="bg-white rounded-xl shadow p-6 flex items-center justify-between"
+        >
+          <div>
+            <h3 class="text-lg font-semibold">e-FO Groupe Bouygues</h3>
+            <p class="text-gray-600 text-sm mt-1">
+              Découvrez les actualités et dossiers du Groupe.
+            </p>
+          </div>
+          <button
+            class="mt-4 md:mt-0 px-4 py-2 border border-red-500 text-red-600 rounded-lg hover:bg-red-50"
+            >S’abonner</button
+          >
+        </div>
+
+        <div
+          class="bg-white rounded-xl shadow p-6 flex items-center justify-between"
+        >
+          <div>
+            <h3 class="text-lg font-semibold">L’abonnement Newsletter</h3>
+            <p class="text-gray-600 text-sm mt-1">
+              Recevez chaque mois les dernières mises à jour.
+            </p>
+          </div>
+          <button
+            class="mt-4 md:mt-0 px-4 py-2 border border-red-500 text-red-600 rounded-lg hover:bg-red-50"
+            >S’abonner</button
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
