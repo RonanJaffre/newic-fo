@@ -1,0 +1,211 @@
+---
+// src/components/home/Representatives.astro
+
+interface Representative {
+  id: string;
+  name: string;
+  lastName: string;
+  position: string;
+  company: string;
+  image?: string;
+  badge?: "Bouygues Telecom" | "Bouygues Telecom" | string;
+}
+
+// Données de démonstration - à remplacer par vos vraies données
+const representatives: Representative[] = [
+  {
+    id: "1",
+    name: "Jamel",
+    lastName: "ABDERRAHMAM",
+    position: "Délégués Syndicaux",
+    company: "Filiale Bouygues Telecom",
+    badge: "Bouygues Telecom",
+  },
+  {
+    id: "2",
+    name: "Jamel",
+    lastName: "ABDERRAHMAM",
+    position: "Délégués Syndicaux",
+    company: "Filiale Bouygues Telecom",
+    badge: "Bouygues Telecom",
+  },
+  {
+    id: "3",
+    name: "Jamel",
+    lastName: "ABDERRAHMAM",
+    position: "Délégués Syndicaux",
+    company: "Filiale Bouygues Telecom",
+    badge: "Bouygues Telecom",
+  },
+  {
+    id: "4",
+    name: "Jamel",
+    lastName: "ABDERRAHMAM",
+    position: "Délégués Syndicaux",
+    company: "Filiale Bouygues Telecom",
+    badge: "Bouygues Telecom",
+  },
+  {
+    id: "5",
+    name: "Jamel",
+    lastName: "ABDERRAHMAM",
+    position: "Délégués Syndicaux",
+    company: "Filiale Bouygues Telecom",
+    badge: "Bouygues Telecom",
+  },
+  {
+    id: "6",
+    name: "Jamel",
+    lastName: "ABDERRAHMAM",
+    position: "Délégués Syndicaux",
+    company: "Filiale Bouygues Telecom",
+  },
+  {
+    id: "7",
+    name: "Jamel",
+    lastName: "ABDERRAHMAM",
+    position: "Délégués Syndicaux",
+    company: "Filiale Bouygues Telecom",
+    badge: "Bouygues Telecom",
+  },
+  {
+    id: "8",
+    name: "Jamel",
+    lastName: "ABDERRAHMAM",
+    position: "Délégués Syndicaux",
+    company: "Filiale Bouygues Telecom",
+    badge: "Bouygues Telecom",
+  },
+  {
+    id: "9",
+    name: "Jamel",
+    lastName: "ABDERRAHMAM",
+    position: "Délégués Syndicaux",
+    company: "Filiale Bouygues Telecom",
+  },
+  {
+    id: "10",
+    name: "Jamel",
+    lastName: "ABDERRAHMAM",
+    position: "Délégués Syndicaux",
+    company: "Filiale Bouygues Telecom",
+  },
+];
+---
+
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <!-- En-tête avec titre et bouton menu -->
+    <div class="flex items-center justify-between mb-10">
+      <h2 class="text-3xl lg:text-4xl font-bold text-gray-900">
+        Représentants
+      </h2>
+
+      <!-- Bouton hamburger menu -->
+      <button
+        class="flex items-center gap-2 text-gray-700 hover:text-primary transition-colors"
+        aria-label="Menu des filtres"
+      >
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2 4H18M2 10H18M2 16H18"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Grille de représentants -->
+    <div
+      class="grid grid-cols-5 sm:grid-cols-5 md:grid-cols-4 lg:grid-cols-5 gap-6"
+    >
+      {
+        representatives.map((rep) => (
+          <article class="bg-gray-50 rounded-xl overflow-hidden hover:shadow-lg transition-shadow group">
+            {/* Image avec badge */}
+            <div class="relative bg-gray-300 h-48">
+              {/* Badge */}
+              {rep.badge && (
+                <div class="absolute top-3 left-3 z-10">
+                  <span class="bg-primary text-white px-3 py-1 rounded-md text-xs font-semibold">
+                    {rep.badge}
+                  </span>
+                </div>
+              )}
+
+              {/* Silhouette placeholder */}
+              <div class="absolute inset-0 flex items-end justify-center pb-4">
+                <svg
+                  class="w-full text-gray-400"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                </svg>
+              </div>
+
+              {rep.image && (
+                <img
+                  src={rep.image}
+                  alt={`${rep.name} ${rep.lastName}`}
+                  class="w-full h-full object-cover"
+                />
+              )}
+            </div>
+
+            {/* Contenu */}
+            <div class="p-4 bg-white">
+              {/* Nom */}
+              <h3 class="font-bold text-gray-900 text-lg mb-1">
+                {rep.name}
+                <br />
+                <span class="uppercase">{rep.lastName}</span>
+              </h3>
+
+              {/* Position */}
+              <p class="text-sm text-gray-600 mb-2">{rep.position}</p>
+
+              {/* Company */}
+              <p class="text-xs text-gray-500 mb-4">{rep.company}</p>
+
+              {/* Bouton Contact */}
+              <button class="w-full bg-primary hover:bg-secondary text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                Contacter
+              </button>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- Bouton "Voir plus" -->
+    <div class="text-center mt-10">
+      <a
+        href="/representatives"
+        class="inline-flex items-center justify-center gap-2 bg-secondary hover:bg-primary text-white px-8 py-3 rounded-full font-semibold transition-colors group"
+      >
+        Voir plus
+        <svg
+          class="w-5 h-5 group-hover:translate-x-1 transition-transform"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
