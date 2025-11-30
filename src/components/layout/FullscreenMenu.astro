@@ -1,0 +1,208 @@
+---
+// src/components/layout/FullscreenMenu.astro
+import LogoPrimary from "../logo/LogoPrimary.astro";
+
+interface MenuItem {
+  label: string;
+  href: string;
+}
+
+const menuItems: MenuItem[] = [
+  { label: "Actualités", href: "/news" },
+  { label: "Qui sommes-nous ?", href: "/about" },
+  { label: "Vos représentants", href: "/worker" },
+  { label: "Pourquoi ouvrir un compte ?", href: "/why-account" },
+  { label: "Mon compte e-FO", href: "/login" },
+];
+---
+
+<!-- Overlay du menu fullscreen -->
+<div
+  id="fullscreen-menu"
+  class="w-full fixed inset-0 bg-primary via-red-500 to-orange-500 z-50 hidden opacity-0 transition-opacity duration-500"
+>
+  <div class="h-full flex flex-col w-full">
+    <!-- Header du menu -->
+    <div class="p-6 flex items-center justify-between">
+      <!-- Logo -->
+      <div class="flex items-center gap-3">
+        <LogoPrimary />
+        <span class="text-white font-bold text-lg">Groupe Bouygues</span>
+      </div>
+
+      <!-- Bouton Close -->
+      <button
+        id="menu-close-btn"
+        class="text-white hover:text-gray-200 transition-colors flex items-center gap-2"
+        aria-label="Fermer le menu"
+      >
+        <span class="text-sm font-medium">Close</span>
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Navigation items -->
+    <nav class="flex-1 flex items-center justify-end">
+      <ul class="space-y-4 text-center">
+        {
+          menuItems.map((item, index) => (
+            <li
+              class="w-full pr-10 menu-item opacity-0 translate-y-4 text-end"
+              style={`animation-delay: ${index * 100}ms`}
+            >
+              <a
+                href={item.href}
+                class="w-full text-white text-3xl md:text-5xl lg:text-6xl font-bold hover:text-gray-200 transition-all duration-300 inline-block hover:scale-110 text-end"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <!-- Footer du menu (optionnel) -->
+    <div class="p-6 text-center">
+      <p class="text-white/70 text-sm">
+        © {new Date().getFullYear()} FO Groupe Bouygues
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Animation d'entrée pour les items du menu */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .menu-item {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  /* Animation du background gradient */
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  #fullscreen-menu {
+    background-size: 200% 200%;
+    animation: gradientShift 10s ease infinite;
+  }
+
+  /* État ouvert */
+  #fullscreen-menu.open {
+    display: flex;
+    opacity: 1;
+  }
+
+  /* État fermé */
+  #fullscreen-menu.closing {
+    opacity: 0;
+  }
+</style>
+
+<script>
+  // Fonction pour ouvrir le menu
+  function openMenu() {
+    const menu = document.getElementById("fullscreen-menu");
+    if (menu) {
+      menu.classList.remove("hidden", "closing");
+      // Force un reflow pour que l'animation fonctionne
+      void menu.offsetWidth;
+      menu.classList.add("open");
+
+      // Désactiver le scroll du body
+      document.body.style.overflow = "hidden";
+
+      // Animer les items du menu
+      const menuItems = menu.querySelectorAll(".menu-item");
+      menuItems.forEach((item, index) => {
+        setTimeout(() => {
+          item.classList.add("animated");
+        }, index * 100);
+      });
+    }
+  }
+
+  // Fonction pour fermer le menu
+  function closeMenu() {
+    const menu = document.getElementById("fullscreen-menu");
+    if (menu) {
+      menu.classList.add("closing");
+      menu.classList.remove("open");
+
+      // Réactiver le scroll du body
+      document.body.style.overflow = "";
+
+      // Cacher complètement après l'animation
+      setTimeout(() => {
+        menu.classList.add("hidden");
+        menu.classList.remove("closing");
+
+        // Reset les animations des items
+        const menuItems = menu.querySelectorAll(".menu-item");
+        menuItems.forEach((item) => {
+          item.classList.remove("animated");
+        });
+      }, 500);
+    }
+  }
+
+  // Event listener pour le bouton d'ouverture (dans le Header)
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuOpenBtn = document.getElementById("menu-open-btn");
+    const menuCloseBtn = document.getElementById("menu-close-btn");
+
+    if (menuOpenBtn) {
+      menuOpenBtn.addEventListener("click", openMenu);
+    }
+
+    if (menuCloseBtn) {
+      menuCloseBtn.addEventListener("click", closeMenu);
+    }
+
+    // Fermer avec la touche Escape
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeMenu();
+      }
+    });
+
+    // Fermer en cliquant sur un lien
+    const menuLinks = document.querySelectorAll("#fullscreen-menu a");
+    menuLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        // Petit délai pour permettre à l'utilisateur de voir le clic
+        setTimeout(closeMenu, 200);
+      });
+    });
+  });
+</script>
