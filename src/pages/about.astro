@@ -1,71 +1,378 @@
 ---
-import Layout from '../components/layout/Layout.astro';
+import Layout from "../components/layout/Layout.astro";
 
-const SITE_NAME = import.meta.env.PUBLIC_SITE_NAME || 'Starterkit Blog';
-const SITE_DESCRIPTION = 'Un blog moderne propulsé par Astro et WordPress';
+const sommaire = [
+  { id: "david-muzelle", label: "David Muzelle, Secrétaire Général." },
+  { id: "notre-histoire", label: "Notre histoire." },
+  { id: "nos-valeurs", label: "Nos valeurs." },
+  { id: "fonctions-syndicales", label: "Les fonctions syndicales." },
+];
 
-const pageData = {
-  hero: {
-    title: `À propos de ${SITE_NAME}`,
-    description: SITE_DESCRIPTION,
+const defends = [
+  {
+    id: "1",
+    title: "Une vraie visibilité sur nos emplois,",
+    description: "nos compétences et individuellement.",
+    image: "/images/about/defend-1.jpg",
   },
-  sections: [
-    {
-      title: 'Notre Histoire',
-      content: `
-        <p>Notre blog a été créé pour partager des contenus de qualité avec notre communauté. 
-        Nous utilisons les dernières technologies pour offrir la meilleure expérience possible.</p>
-        <p>Propulsé par Astro et WordPress, notre plateforme combine performance et facilité de gestion.</p>
-      `,
-    },
-    {
-      title: 'Notre Mission',
-      content: `
-        <p>Notre mission est de créer un espace où le contenu de qualité rencontre la performance web.</p>
-        <p>Nous croyons en l'importance de sites web rapides, accessibles et agréables à utiliser.</p>
-      `,
-    }
-  ],
-}
+  {
+    id: "2",
+    title: "L'accès à la formation et au développement personnel",
+    description: "dans son métier.",
+    image: "/images/about/defend-2.jpg",
+  },
+  {
+    id: "3",
+    title: "Des relations de travail bienveillantes et ouvertes",
+    description: "au dialogue constructif.",
+    image: "/images/about/defend-3.jpg",
+  },
+  {
+    id: "4",
+    title: "Un environnement de travail sain",
+    description: "et des conditions de travail décentes.",
+    image: "/images/about/defend-4.jpg",
+  },
+];
+
+const fonctionsSyndicales = [
+  "Le syndicat d'entreprise",
+  "Délégué Syndical",
+  "Délégué Syndical Central",
+  "Représentant Syndical en CSE",
+  "Élus de CSE",
+  "Comité de Groupe France",
+  "Comité Économique Européen",
+  "Conseil de Surveillance des Fonds de placement",
+  "Conseils d'administration (CA) Bouygues et filiales",
+];
 ---
 
-<Layout 
-  title={`À propos - ${SITE_NAME}`}
-  description="Découvrez notre histoire et notre mission"
->
+<Layout title="Qui sommes-nous ?" description="Découvrez FO Groupe Bouygues">
   <!-- Hero Section -->
-  <section class="relative py-20 bg-gradient-to-br from-blue-50 to-indigo-100">
+  <section class="relative bg-white py-12">
     <div class="container mx-auto px-4">
-      <div class="max-w-3xl mx-auto text-center">
-        <h1 class="text-5xl font-bold mb-6 text-gray-900">{pageData.hero.title}</h1>
-        <p class="text-xl text-gray-700">{pageData.hero.description}</p>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Titre -->
+        <div>
+          <h1 class="text-5xl lg:text-6xl font-bold text-secondary mb-8">
+            Qui sommes-nous ?
+          </h1>
+        </div>
+
+        <!-- Image -->
+        <div class="relative h-64 lg:h-80 rounded-2xl overflow-hidden">
+          <div
+            class="absolute inset-0 bg-gray-200 flex items-center justify-center"
+          >
+            <svg
+              class="w-20 h-20 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+              ></path>
+            </svg>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Content Sections -->
-  {pageData.sections.map((section, index) => (
-    <section class={`py-16 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto">
-          <h2 class="text-3xl font-bold mb-6 text-gray-900">{section.title}</h2>
-          <div class="prose prose-lg max-w-none text-gray-700" set:html={section.content} />
+  <!-- Main Content -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <!-- Sidebar - Sommaire -->
+        <aside class="lg:col-span-1">
+          <div
+            class="bg-white rounded-2xl p-6 sticky top-24 border-2 border-gray-200"
+          >
+            <h3 class="font-bold text-primary text-lg mb-4">Sommaire</h3>
+            <nav>
+              <ul class="space-y-3">
+                {
+                  sommaire.map((item) => (
+                    <li>
+                      <a
+                        href={`#${item.id}`}
+                        class="text-gray-700 hover:text-primary transition-colors text-sm block py-1"
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </nav>
+            <div class="mt-6 pt-6 border-t border-gray-200">
+              <p class="font-bold text-secondary">David Muzelle</p>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="lg:col-span-2 space-y-16">
+          <!-- David Muzelle Section -->
+          <article id="david-muzelle" class="scroll-mt-24">
+            <h2 class="text-4xl font-bold text-secondary mb-6">
+              David Muzelle, Secrétaire Général.
+            </h2>
+
+            <div
+              class="prose prose-lg max-w-none text-gray-700 space-y-4 mb-8"
+            >
+              <p class="text-primary font-semibold">
+                « Chers amis, vous m'avez élu Secrétaire Général lors de notre
+                AG du 8 décembre 2020, et c'est avec un immense honneur que
+                j'endosse la responsabilité de cette mission.
+              </p>
+
+              <p>
+                Très investi dans la vie syndicale depuis de nombreuses années,
+                j'ai à cœur de jouer pleinement mon rôle face. Il doit servir à
+                protéger l'intérêts des salariés, prendre en compte les
+                complexités économiques dans lesquelles nos entreprises
+                évoluent, et faire progresser leur statut social. »
+              </p>
+            </div>
+
+            <!-- Image avec logo FO -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+              <div
+                class="relative h-64 bg-gray-200 rounded-2xl overflow-hidden flex items-end justify-center p-8"
+              >
+                <div
+                  class="w-48 h-48 bg-primary/90 rounded-xl flex items-center justify-center transform rotate-6"
+                >
+                  <span class="text-white text-8xl font-bold">FO</span>
+                </div>
+              </div>
+
+              <div class="space-y-4 text-gray-700">
+                <p>
+                  FO Groupe Bouygues, est le syndicat référent et partenaire du
+                  Groupe Bouygues. Un syndicat historique, qui depuis 1977 agit
+                  pour les salariés tout en préservant leur outil de travail :
+                  l'entreprise.
+                </p>
+
+                <p>
+                  Notre rôle est d'autant plus important que le centre de
+                  gravité du droit social se déplace vers l'entreprise. Les
+                  dernières évolutions législatives font peser de plus en plus
+                  de responsabilités sur les Délégués Syndicaux en renvoyant la
+                  gestion des relations sociales non plus vers le code du
+                  travail, mais vers les accords d'entreprise.
+                </p>
+              </div>
+            </div>
+
+            <div class="prose prose-lg max-w-none text-gray-700 space-y-4">
+              <p>
+                Il est donc plus qu'indispensable de se doter de syndicats
+                puissants et engagés afin que le progrès social reste le
+                premier sujet de développement de notre Groupe !
+              </p>
+
+              <p>
+                FO Groupe Bouygues, agit depuis plus de 45 ans pour que ses
+                équipes soient formées, informées et accompagnées afin d'être
+                toujours plus proches de vous !
+              </p>
+
+              <p>
+                Je suis convaincu que la représentation du personnel dans
+                l'entreprise est un enjeu majeur ; que c'est la garantie d'un
+                dialogue social de qualité dans nos entreprises. Je vais
+                consacrer ce mandat à continuer le travail engagé par mes
+                prédécesseurs, tout en relevant les défis quotidien le
+                développement de notre Groupe.
+              </p>
+            </div>
+          </article>
+
+          <!-- Notre Histoire Section -->
+          <article id="notre-histoire" class="scroll-mt-24">
+            <h2 class="text-4xl font-bold text-secondary mb-6">
+              Notre histoire.
+            </h2>
+
+            <div class="prose prose-lg max-w-none text-gray-700 space-y-4">
+              <p>
+                Le Syndicat Autonome Bouygues (SAB) a été créé en 1968, suite
+                aux accords de Grenelle qui autorisaient enfin la création de
+                sections syndicales d'entreprise.
+              </p>
+
+              <p>
+                C'est en 1977 que les adhérents du SAB ont demandé l'affiliation
+                du syndicat autonome à la Confédération Force Ouvrière. En
+                effet, à nouveau ils devaient sécuriser notre statut d'un
+                syndicat représentatif au niveau national, qui puisse participer
+                aux négociations de Branches, et faire valoir l'intérêt des
+                salariés du Groupe au niveau de notre Convention Collective.
+              </p>
+
+              <p class="font-bold text-secondary">
+                Le SAB est alors devenu Syndicat National Force Ouvrière du
+                Groupe Bouygues.
+              </p>
+
+              <p>
+                À l'époque nous représentions 12% des voix. Aujourd'hui FO
+                Groupe Bouygues c'est plus de 50% des voix sur l'ensemble des
+                sociétés du Groupe !
+              </p>
+
+              <p class="font-bold text-secondary">
+                FO Groupe Bouygues défend :
+              </p>
+            </div>
+
+            <!-- Grille des défenses -->
+            <div
+              class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8"
+            >
+              {
+                defends.map((item) => (
+                  <div class="relative h-64 rounded-2xl overflow-hidden group">
+                    <div class="absolute inset-0 bg-gray-200 flex items-center justify-center">
+                      <svg
+                        class="w-16 h-16 text-gray-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="1.5"
+                          d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                        />
+                      </svg>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end p-6">
+                      <div class="text-white">
+                        <h4 class="font-bold text-sm mb-1">{item.title}</h4>
+                        <p class="text-xs opacity-90">{item.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </article>
+
+          <!-- Nos Valeurs Section -->
+          <article id="nos-valeurs" class="scroll-mt-24">
+            <h2 class="text-4xl font-bold text-secondary mb-6">
+              Nos valeurs.
+            </h2>
+
+            <div
+              class="prose prose-lg max-w-none text-gray-700 space-y-4 mb-8"
+            >
+              <p>
+                Nous sommes un syndicat <strong>apolitique</strong>, libre de
+                nos choix et de nos orientations, à l'écoute et au service des
+                salariés.
+              </p>
+
+              <p>
+                Nous voulons être <strong
+                  >un syndicat de proposition</strong
+                > constructif et déterminés, pragmatique et réaliste, solidaire
+                et engagée. Nos actions sont avant tout le reflet des demandes
+                exprimées par les salariés.
+              </p>
+
+              <p>
+                Nous défendons <strong
+                  >la consultation et la négociation</strong
+                > dans nos relations avec la Direction, avec la volonté de faire
+                aboutir les demandes des salariés.
+              </p>
+
+              <p>
+                Nous sommes convaincus que le syndicalisme en entreprise est une
+                <strong>réponse concrète</strong> et adaptée aux attentes et aux
+                préoccupations des salariés.
+              </p>
+
+              <p>
+                En tant qu'acteur des conditions de travail, du dialogue social
+                et de sa protection juridique, nous voulons être <strong
+                  >partie prenante des préoccupations environnementales</strong
+                > et de la politique RSE de notre groupe.
+              </p>
+            </div>
+
+            <!-- Image drapeau FO -->
+            <div class="relative h-80 bg-gray-200 rounded-2xl overflow-hidden">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <svg
+                  class="w-24 h-24 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Les fonctions syndicales Section -->
+          <article id="fonctions-syndicales" class="scroll-mt-24">
+            <h2 class="text-4xl font-bold text-secondary mb-6">
+              Les fonctions syndicales.
+            </h2>
+
+            <div class="prose prose-lg max-w-none text-gray-700 mb-8">
+              <p class="text-primary">
+                Vestibulum vel hendrerit sapien, et consequat leo. Etiam
+                tincidunt interdum dapibus. Orci varius natoque penatibus et
+                magnis dis parturient montes, nascetur ridiculus mus. Aenean
+                mollis enim eieu, in posuere sapien blandit ut. Phasellus ac
+                lorem urna. Morbi in facilisis odio, nec elementum ligula.
+              </p>
+            </div>
+
+            <!-- Liste des fonctions -->
+            <div class="space-y-3">
+              {
+                fonctionsSyndicales.map((fonction) => (
+                  <div class="flex items-center justify-between bg-white p-4 rounded-lg border-l-4 border-primary">
+                    <span class="font-medium text-gray-900">{fonction}</span>
+                    <div class="w-4 h-4 rounded-full bg-primary flex-shrink-0" />
+                  </div>
+                ))
+              }
+            </div>
+          </article>
         </div>
       </div>
-    </section>
-  ))}
-
-  <!-- CTA Section -->
-  <section class="py-16 bg-blue-600 text-white">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-6">Prêt à découvrir nos articles ?</h2>
-      <p class="text-xl mb-8 text-blue-100">Explorez notre collection d'articles et restez informé.</p>
-      <a 
-        href="/blog" 
-        class="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
-      >
-        Voir tous les articles
-      </a>
     </div>
   </section>
 </Layout>
+
+<style>
+  .scroll-mt-24 {
+    scroll-margin-top: 6rem;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
