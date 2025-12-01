@@ -27,7 +27,7 @@ const classes: Record<Color, Record<Variant, string>> = {
 
 <span
   {...rest}
-  class={`inline-flex items-center justify-center gap-2 whitespace-nowrap ${classes[color][variant]} px-4 py-1 rounded-3xl font-[700] flex flex-row items-center gap-x-1 ${className}`}
+  class={`inline-flex items-center justify-center gap-2 whitespace-nowrap ${classes[color][variant]} px-4 py-1 text-[12px] font-[700] rounded-3xl font-[700] flex flex-row items-center gap-x-1 ${className}`}
 >
   <slot />
 </span>

@@ -18,7 +18,7 @@ const articles: Article[] = [
     title: "Praesent neque libero",
     excerpt:
       "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam fa...",
-    image: "/images/articles/article-2.jpg",
+    image: cover,
     link: "/news/2",
     badge: "À la une",
     content,
@@ -34,7 +34,7 @@ const articles: Article[] = [
     title: "Praesent neque libero",
     excerpt:
       "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam fa...",
-    image: "/images/articles/article-3.jpg",
+    image: cover,
     link: "/news/3",
     badge: "Dossier",
     content,
@@ -50,7 +50,7 @@ const articles: Article[] = [
     title: "Praesent neque libero",
     excerpt:
       "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam fa...",
-    image: "/images/articles/article-4.jpg",
+    image: cover,
     link: "/news/4",
     content,
     tags,
@@ -65,7 +65,7 @@ const articles: Article[] = [
     title: "Praesent neque libero",
     excerpt:
       "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam fa...",
-    image: "/images/articles/article-5.jpg",
+    image: cover,
     link: "/news/5",
     content,
     tags,

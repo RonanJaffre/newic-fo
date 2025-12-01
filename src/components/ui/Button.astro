@@ -3,35 +3,44 @@ import type { JSX } from "astro/jsx-runtime";
 
 type Color = "primary" | "secondary";
 type Variant = "contained" | "outlined";
+type Size = "lg" | "md" | "sm";
 interface Props extends JSX.ButtonHTMLAttributes {
   color?: Color;
   variant?: Variant;
+  size?: Size;
 }
 const {
   color = "primary",
   variant = "contained",
+  size = "md",
   class: className,
   ...rest
 } = Astro.props;
 const classes: Record<Color, Record<Variant, string>> = {
   primary: {
     contained:
-      "bg-primary text-primary-foreground hover:border hover:border-primary hover:bg-transparent hover:text-primary",
+      "border border-primary bg-primary text-primary-foreground hover:border hover:border-primary hover:bg-transparent hover:text-primary",
     outlined:
-      "border border-primary text-primary hover:bg-primary hover:text-primary-foreground",
+      "border border-primary bg-primary-foreground text-primary hover:bg-primary hover:text-primary-foreground",
   },
   secondary: {
     contained:
-      "bg-secondary text-secondary-foreground hover:border hover:border-secondary hover:text-secondary",
+      "border border-secondary bg-secondary text-secondary-foreground hover:border hover:bg-transparent hover:border-secondary hover:text-secondary",
     outlined:
-      "border border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground",
+      "border border-secondary bg-secondary-foreground text-secondary hover:bg-secondary hover:text-secondary-foreground",
   },
+};
+
+const sizes: Record<Size, string> = {
+  lg: "",
+  sm: "",
+  md: "",
 };
 ---
 
 <button
   {...rest}
-  class={`inline-flex items-center justify-center gap-2 whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 ${classes[color][variant]} px-4 py-1 rounded-3xl font-[700] transition-shadow w-fit hover:shadow-lg flex flex-row items-center gap-x-1 ${className}`}
+  class={`inline-flex items-center justify-center gap-2 whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0  px-4 py-1 rounded-3xl font-[700] transition-shadow w-fit hover:shadow-lg flex flex-row items-center gap-x-1 ${classes[color][variant]} ${sizes[size]} ${className}`}
 >
-  <slot />
+  <slot class="text-current" />
 </button>

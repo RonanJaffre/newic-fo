@@ -2,6 +2,7 @@
 import type { Article } from "@/types";
 import Button from "../ui/Button.astro";
 import { getAllNews } from "@/lib/wordpress";
+import Badge from "../ui/Badge.astro";
 
 // src/components/home/News.astro
 
@@ -9,21 +10,6 @@ interface Event {
   date: string;
   title: string;
 }
-
-// Données de démonstration - à remplacer par vos vraies données
-const featuredArticle: Article = {
-  id: "1",
-  category: "Bouygues Telecom",
-  date: "03 novembre 2025",
-  readTime: "12 min",
-  title: "Titre article un peu long sur plusieurs lignes",
-  excerpt:
-    "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
-  image: "/images/articles/featured.jpg",
-  link: "/blog/article-1",
-  badge: "Dossier",
-  content: "",
-};
 
 const upcomingEvents: Event[] = [
   {
@@ -41,6 +27,8 @@ const upcomingEvents: Event[] = [
 ];
 
 const articles = await getAllNews(6);
+
+const featuredArticle: Article = articles[0];
 ---
 
 <section class="py-16">
@@ -52,47 +40,25 @@ const articles = await getAllNews(6);
       <Button variant="outlined"> Dossiers </Button>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      <!-- Colonne gauche : Article principal (2/3) -->
-      <div class="lg:col-span-2">
-        <article
-          class="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-full"
-        >
-          <!-- Badge -->
-          {
-            featuredArticle.badge && (
-              <div class="absolute top-4 left-4 z-10">
-                <span class="bg-primary text-white px-4 py-1.5 rounded-md text-xs font-semibold">
-                  {featuredArticle.badge}
-                </span>
-              </div>
-            )
-          }
+    <div class="w-full mb-10 flex flex-row justify-between h-[322px] gap-x-10">
+      <article
+        style={`background-image: url(${featuredArticle.image});`}
+        class={`flex flex-row justify-between relative w-full h-full bg-cover bg-repeat relative rounded-2xl overflow-hidden`}
+      >
+        <!-- Badge -->
+        {
+          featuredArticle.badge && (
+            <Badge
+              class="absolute top-4 left-4 z-10 bg-white border-white"
+              variant="outlined"
+            >
+              {featuredArticle.badge}
+            </Badge>
+          )
+        }
 
-          <div class="grid md:grid-cols-2 h-full">
-            <!-- Image -->
-            <div class="relative h-64 md:h-full bg-gray-200">
-              <div
-                class="absolute inset-0 flex items-center justify-center text-gray-400"
-              >
-                <!-- Placeholder pour l'image -->
-                <svg
-                  class="w-20 h-20"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  ></path>
-                </svg>
-              </div>
-            </div>
-
-            <!-- Contenu -->
+        <div class="w-full flex flex-row justify-end rounded-2xl">
+          <div class="p-4 flex items-center justify-end h-full aspect-[1.3/1]">
             <div
               class="bg-gradient-to-br from-gray-800 to-gray-900 text-white p-8 flex flex-col justify-between"
             >
@@ -140,8 +106,8 @@ const articles = await getAllNews(6);
               </a>
             </div>
           </div>
-        </article>
-      </div>
+        </div>
+      </article>
 
       <!-- Colonne droite : Événements à venir (1/3) -->
       <div
