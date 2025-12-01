@@ -1,0 +1,215 @@
+---
+import Layout from "../components/layout/Layout.astro";
+
+const benefits = [
+  {
+    id: "1",
+    icon: "document",
+    title: "Un accès à la documentation juridique",
+    description:
+      "Retrouvez vos accords d'entreprise grâce notre espace personnel à tout moment.",
+    image: "/images/why-account/team-1.jpg",
+  },
+  {
+    id: "2",
+    icon: "tools",
+    title: "La boîte facilissité de votre CSE",
+    description:
+      "Simplifiez tous vos documents, etc.l",
+    image: "/images/why-account/team-2.jpg",
+  },
+  {
+    id: "3",
+    icon: "users",
+    title: "Il serait bien aussi de voir l'adhérer à FO Groupe Bouygues",
+    description: "en ligne.",
+    image: "/images/why-account/team-3.jpg",
+  },
+  {
+    id: "4",
+    icon: "calendar",
+    title: "Egalement de pouvoir se consulter nos référents syndicaux",
+    description:
+      "sites internet, outils, sites web d'adhésion, référents syndicaux.",
+    image: "/images/why-account/team-4.jpg",
+  },
+];
+
+const adherezBenefits = [
+  {
+    id: "1",
+    title: "Participer à des débats d'informations",
+    description: "Bloc de débattre informations vous sur.",
+    image: "/images/why-account/debate.jpg",
+  },
+  {
+    id: "2",
+    title: "Bénéficier de notre",
+    subtitle: "service d'aide",
+    description:
+      "service de conseil juridique et de soutien surtout aux choix individuels des compensations et des bénéfices.",
+    highlight: true,
+    image: "/images/why-account/service.jpg",
+  },
+  {
+    id: "3",
+    title: "Fichier de téléphone(s) et télécharge",
+    description: "carrez, navigue, blogs, centres d'infos...",
+    image: "/images/why-account/files.jpg",
+  },
+  {
+    id: "4",
+    title: "Accéder au catalogue de formations",
+    description: "gratuites, sociales et économiques.",
+    image: "/images/why-account/formation.jpg",
+  },
+];
+---
+
+<Layout
+  title="Pourquoi ouvrir un compte ?"
+  description="Découvrez tous les avantages d'ouvrir un compte e-FO"
+>
+  <!-- Hero Section -->
+  <section class="relative bg-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Titre -->
+        <div>
+          <h1 class="text-5xl lg:text-6xl font-bold text-secondary mb-8">
+            Pourquoi ouvrir un compte ?
+          </h1>
+        </div>
+
+        <!-- Image -->
+        <div class="relative h-64 lg:h-80 rounded-2xl overflow-hidden">
+          <div
+            class="absolute inset-0 bg-gray-200 flex items-center justify-center"
+          >
+            <svg
+              class="w-20 h-20 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <!-- Introduction -->
+      <div class="mb-16 text-center">
+        <h2 class="text-3xl lg:text-4xl font-bold text-secondary mb-6">
+          Découvrez toutes les bonnes raisons d'ouvrir<br />
+          votre compte personnel e-FO
+        </h2>
+        <p class="text-gray-700 max-w-3xl mx-auto leading-relaxed">
+          Débat iaculis sed conduit. Quisqua us nunc cras. <span
+            class="text-primary font-semibold"
+            >Etiam facilisis interdum dignions. Duis velan rutrum porttitius et
+            magna dis porttitor morbi. consectur ridaculus mus.</span
+          > Aenean cursus amet arcu, id posuere sapien blandit ut. Phasellus ac
+          lorem id urna. Etiam facilisis odio, nec elementum ligula.
+        </p>
+      </div>
+
+      <!-- Grille des avantages principaux (2 colonnes) -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+        <!-- Image principale -->
+        <div class="relative h-96 rounded-2xl overflow-hidden">
+          <div
+            class="absolute inset-0 bg-gray-200 flex items-center justify-center"
+          >
+            <svg
+              class="w-24 h-24 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Liste des avantages -->
+        <div class="space-y-6">
+          {
+            benefits.map((benefit, index) => (
+              <div class="flex items-start gap-4">
+                <div class="flex-shrink-0 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm">
+                  {index + 1}
+                </div>
+                <div>
+                  <h3 class="font-bold text-gray-900 mb-1">{benefit.title}</h3>
+                  <p class="text-sm text-gray-600">{benefit.description}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Section "Adhérez à FO Groupe Bouygues vous permet de :" -->
+      <div class="mb-16">
+        <h2 class="text-3xl font-bold text-secondary mb-10 text-center">
+          Adhérez à FO Groupe Bouygues vous permet de :
+        </h2>
+
+        <!-- Grille de 4 cartes -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {
+            adherezBenefits.map((item) => (
+              <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+                {/* Image */}
+                <div class="relative h-48 bg-gray-200">
+                  <div class="absolute inset-0 flex items-center justify-center">
+                    <svg
+                      class="w-16 h-16 text-gray-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5"
+                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Contenu */}
+                <div class="p-6">
+                  <h3 class="font-bold text-gray-900 mb-2">
+                    {item.title}
+                    {item.subtitle && (
+                      <span class="text-primary"> {item.subtitle}</span>
+                    )}
+                  </h3>
+                  <p class="text-sm text-gray-600">{item.description}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
