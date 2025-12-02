@@ -1,0 +1,49 @@
+---
+// src/components/ui/VerticalBadge.astro
+
+interface Props {
+  text?: string;
+  position?: "left" | "right";
+}
+
+const { text = "Dossier", position = "left" } = Astro.props;
+---
+
+<div
+  class={`vertical-badge ${position === "right" ? "badge-right" : "badge-left"} rounded-xl p-[1px] py-3 z-3 bg-primary`}
+>
+  <span class="badge-text text-[14px] font-[700]">{text}</span>
+</div>
+
+<style>
+  .vertical-badge {
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .badge-left {
+    left: 0;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    transform: translateX(-100%);
+  }
+
+  .badge-right {
+    right: 0;
+    transform: translateX(100%);
+  }
+
+  .badge-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+  }
+
+  /* Variante sans rotation pour un style différent */
+  .badge-text-sideways {
+    transform: rotate(0deg);
+  }
+</style>
