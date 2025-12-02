@@ -1,7 +1,8 @@
 ---
 // src/components/layout/Footer.astro
-import LogoPrimary from "../logo/LogoPrimary.astro";
+import LogoSecondary from "../logo/LogoSecondary.astro";
 import Button from "../ui/Button.astro";
+import { SEO } from "@/lib/constants";
 
 const year = new Date().getFullYear();
 
@@ -59,28 +60,23 @@ const footerLinks = {
       <Button color="primary">S'inscrire</Button>
     </div>
   </div>
-  <div class="w-full pt-10 border-t-3 border-primary">
+  <div class="w-full pt-10 border-t-3 border-primary text-[#674141]">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
       <!-- Colonne 1 : Logo et informations -->
-      <div class="space-y-6">
+      <div class="space-y-3">
         <div class="flex items-center gap-3">
-          <LogoPrimary />
-          <div class="flex flex-col">
-            <span class="font-bold text-secondary text-lg">Groupe Bouygues</span
-            >
-          </div>
+          <LogoSecondary />
         </div>
 
-        <div class="text-sm text-gray-700 space-y-1">
-          <p>1 avenue Eugène Freyssinet- Guyancourt</p>
-          <p>78061 Saint-Quentin-en-Yvelines</p>
+        <div class="text-sm space-y-1">
+          {SEO.adress}
         </div>
 
         <!-- Icônes sociales -->
         <div class="flex items-center gap-4">
           <!-- YouTube -->
           <a
-            href="https://youtube.com"
+            href={SEO.youtube}
             target="_blank"
             rel="noopener noreferrer"
             class="text-secondary hover:text-primary transition-colors"
@@ -119,38 +115,37 @@ const footerLinks = {
           </a>
 
           <!-- Bouton contacter vos élus -->
-          <a
-            href="/contact"
-            class="bg-secondary hover:bg-primary text-white px-4 py-2 rounded-full text-xs font-medium transition-colors flex items-center gap-2"
-          >
-            <svg
-              class="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-              ></path>
-            </svg>
-            contacter vos élus
+          <a href="/contact" target="_blank">
+            <Button variant="contained" color="secondary">
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                ></path>
+              </svg>
+              <span>contacter vos élus</span>
+            </Button>
           </a>
         </div>
       </div>
 
       <!-- Colonne 2 : Accueil -->
       <div>
-        <h3 class="font-bold text-secondary text-base mb-4">Accueil</h3>
-        <ul class="space-y-3">
+        <h3 class="font-bold text-base mb-2">Accueil</h3>
+        <ul class="space-y-[1px]">
           {
             footerLinks.accueil.map((link) => (
               <li>
                 <a
                   href={link.href}
-                  class="text-gray-700 hover:text-primary transition-colors text-sm"
+                  class="hover:text-primary transition-colors text-sm"
                 >
                   {link.label}
                 </a>
@@ -162,15 +157,41 @@ const footerLinks = {
 
       <!-- Colonne 3 : Mon compte e-FO (avec badge) -->
       <div>
-        <div class="flex items-center gap-2 mb-4">
+        <div class="flex items-center gap-2 mb-2">
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 12 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M2.44454 9.63912L4.75 7.33367M4.75 7.33367C5.24765 7.83132 5.93515 8.13912 6.69454 8.13912C8.21333 8.13912 9.44454 6.90791 9.44454 5.38912C9.44454 3.87034 8.21333 2.63912 6.69454 2.63912C5.17576 2.63912 3.94454 3.87034 3.94454 5.38912C3.94454 6.14852 4.25235 6.83602 4.75 7.33367Z"
+              stroke="#1D1D1D"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
           <h3 class="font-bold text-secondary text-base">Mon compte e-FO</h3>
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 12 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M2.44454 9.63912L4.75 7.33367M4.75 7.33367C5.24765 7.83132 5.93515 8.13912 6.69454 8.13912C8.21333 8.13912 9.44454 6.90791 9.44454 5.38912C9.44454 3.87034 8.21333 2.63912 6.69454 2.63912C5.17576 2.63912 3.94454 3.87034 3.94454 5.38912C3.94454 6.14852 4.25235 6.83602 4.75 7.33367Z"
+              stroke="#1D1D1D"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
         </div>
       </div>
 
       <!-- Colonne 4 : Liens utiles -->
       <div>
-        <h3 class="font-bold text-secondary text-base mb-4">Liens utiles</h3>
-        <ul class="space-y-3">
+        <h3 class="font-bold text-secondary text-base mb-2">Liens utiles</h3>
+        <ul class="space-y-[1px]">
           {
             footerLinks.liensUtiles.map((link) => (
               <li>

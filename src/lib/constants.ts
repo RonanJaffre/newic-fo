@@ -2,6 +2,12 @@ export const SITE_NAME = 'Starter Kit Blog'
 export const SITE_DESCRIPTION = 'Ceci est starter kit de blog.'
 export const SITE_URL = 'https://monblog.com'
 
+export const SEO = {
+  adress:
+    "1 avenue Eugène Freyssinet- Guyancourt 78061 Saint-Quentin-en-Yvelines",
+  name: "Groupe Bouygues",
+  youtube: "https://www.youtube.com/@fogroupebouygues2897",
+};
 export const NAV_LINKS = [
   { href: '/', label: 'Accueil' },
   { href: '/blog', label: 'Blog' },
