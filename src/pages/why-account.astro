@@ -52,30 +52,27 @@ const benefits = [
 const adherezBenefits = [
   {
     id: "1",
-    title: "Participer à des débats d'informations",
-    description: "Bloc de débattre informations vous sur.",
-    image: "/images/why-account/debate.jpg",
+    title:
+      "Participer à des <b class='text-primary'>ateliers d’information</b> et/ou <b class='text-primary'>de réflexion en ligne.</b>",
+    image: "../../images/60646c5bcab03b7e39f1ebda2b48c8ff26ec8e91.jpg",
   },
   {
     id: "2",
-    title: "Bénéficier de notre",
-    subtitle: "service d'aide",
-    description:
-      "service de conseil juridique et de soutien surtout aux choix individuels des compensations et des bénéfices.",
-    highlight: true,
-    image: "/images/why-account/service.jpg",
+    title:
+      "<b class='text-primary'>Bénéficier de l’AFOC : </b>service de conseil juridique et de traitement amiable des litiges individuels des consommateurs et des locataires.",
+    image: "../../images/60646c5bcab03b7e39f1ebda2b48c8ff26ec8e94.jpg",
   },
   {
     id: "3",
-    title: "Fichier de téléphone(s) et télécharge",
-    description: "carrez, navigue, blogs, centres d'infos...",
-    image: "/images/why-account/files.jpg",
+    title:
+      "Profiter de <b class='text-primary'>MyStoreFO billetterie</b>, univers voyage, Coop, bonnes affaires…",
+    image: "../../images/60646c5bcab03b7e39f1ebda2b48c8ff26ec8e93.jpg",
   },
   {
     id: "4",
-    title: "Accéder au catalogue de formations",
-    description: "gratuites, sociales et économiques.",
-    image: "/images/why-account/formation.jpg",
+    title:
+      "Accéder au <b class='text-primary'>catalogue de formations</b>, juridiques, sociales et économiques.",
+    image: "../../images/60646c5bcab03b7e39f1ebda2b48c8ff26ec8e92.jpg",
   },
 ];
 ---
@@ -94,7 +91,7 @@ const adherezBenefits = [
   <!-- Main Content -->
   <Container class="max-w-[1002px] mx-auto">
     <section class="py-16">
-      <div >
+      <div>
         <!-- Introduction -->
         <div class="mb-16">
           <h2
@@ -112,97 +109,71 @@ const adherezBenefits = [
           </p>
         </div>
 
-        <!-- Grille des avantages principaux (2 colonnes) -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-          <!-- Image principale -->
-          <div class="relative h-96 rounded-2xl overflow-hidden">
+        <!-- Image principale -->
+        <div
+          style="background-image: url('../../images/60646c5bcab03b7e39f1ebda2b48c8ff26ec8e9e.jpg');"
+          class="bg-cover bg-repeat bg-center h-[471px] w-full lg:w-full md:h-full"
+        >
+          <div
+            class="flex flex-col items-end lg:flex-row md:flex-row justify-end h-full p-4"
+          >
             <div
-              class="absolute inset-0 bg-gray-200 flex items-center justify-center"
+              class="bg-white lg:w-[315px] md:w-[315] w-fit rounded-[8px] p-4 flex flex-col"
             >
-              <svg
-                class="w-24 h-24 text-gray-400"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                ></path>
-              </svg>
+              {
+                benefits.map((benefit, index) => (
+                  <div class="flex flex-row items-center gap-2">
+                    <div class="min-h-[8px] min-w-[8px]">
+                      <svg
+                        viewBox="0 0 7 9"
+                        fill="none"
+                        height="8px"
+                        width="8px"
+                        xmlns="http://www.w3.org/2000/svg"
+                        id={index.toString()}
+                      >
+                        <path
+                          d="M0.5 0.5L6.5 0.5L6.5 8.5L3.5 6L0.5 8.5L0.5 0.5Z"
+                          stroke="#D15447"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3
+                        class="font-400 text-[14px]"
+                        set:html={benefit.title}
+                      />
+                    </div>
+                  </div>
+                ))
+              }
             </div>
           </div>
-
           <!-- Liste des avantages -->
-          <div class="space-y-6">
-            {
-              benefits.map((benefit, index) => (
-                <div class="flex items-center gap-4">
-                  <svg
-                    width="7"
-                    height="9"
-                    viewBox="0 0 7 9"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M0.5 0.5L6.5 0.5L6.5 8.5L3.5 6L0.5 8.5L0.5 0.5Z"
-                      stroke="var(--primary)"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-
-                  <div>
-                    <h3 class="font-400 text-[14px]" set:html={benefit.title} />
-                  </div>
-                </div>
-              ))
-            }
-          </div>
         </div>
 
-        <!-- Section "Adhérez à FO Groupe Bouygues vous permet de :" -->
-        <div class="mb-16">
-          <h2 class="text-3xl font-bold text-secondary mb-10 text-center">
+        <div class="mt-8">
+          <h2 class="text-[20px] font-800 text-secondary mb-10">
             Adhérez à FO Groupe Bouygues vous permet de :
           </h2>
 
           <!-- Grille de 4 cartes -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 gap-8">
             {
-              adherezBenefits.map((item) => (
-                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+              adherezBenefits.map((item, index) => (
+                <div
+                  class={`flex gap-2 ${(index + 1) % 2 === 0 ? "lg:flex-row md:flex-row flex-row-reverse" : "flex-row"}`}
+                >
                   {/* Image */}
-                  <div class="relative h-48 bg-gray-200">
-                    <div class="absolute inset-0 flex items-center justify-center">
-                      <svg
-                        class="w-16 h-16 text-gray-400"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="1.5"
-                          d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                        />
-                      </svg>
-                    </div>
-                  </div>
+                  <div
+                    style={`background-image: url("${item.image}");`}
+                    class="bg-repeat bg-cover bg-center aspect-[1/1] h-[120px]"
+                  />
 
-                  {/* Contenu */}
-                  <div class="p-6">
-                    <h3 class="font-bold text-gray-900 mb-2">
-                      {item.title}
-                      {item.subtitle && (
-                        <span class="text-primary"> {item.subtitle}</span>
-                      )}
-                    </h3>
-                    <p class="text-sm text-gray-600">{item.description}</p>
+                  <div class="">
+                    <h3 class="font-[400] text-[14px]" set:html={item.title} />
                   </div>
                 </div>
               ))
