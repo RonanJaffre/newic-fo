@@ -4,6 +4,7 @@ import Button from "../ui/Button.astro";
 import { getAllNews } from "@/lib/wordpress";
 import Badge from "../ui/Badge.astro";
 import BadgeCorner from "../ui/BadgeCorner.astro";
+import { Input } from "../ui/input";
 
 // src/components/home/News.astro
 
@@ -39,94 +40,133 @@ const featuredArticle: Article = articles[0];
       <Button> Toutes </Button>
       <Button variant="outlined"> Actualités </Button>
       <Button variant="outlined"> Dossiers </Button>
+      <div
+        class="border-b-1 border-b-primary flex flex-row items-center flex-1"
+      >
+        <svg
+          width="12"
+          height="12"
+          viewBox="0 0 12 12"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2.44454 9.63912L4.75 7.33367M4.75 7.33367C5.24765 7.83132 5.93515 8.13912 6.69454 8.13912C8.21333 8.13912 9.44454 6.90791 9.44454 5.38912C9.44454 3.87034 8.21333 2.63912 6.69454 2.63912C5.17576 2.63912 3.94454 3.87034 3.94454 5.38912C3.94454 6.14852 4.25235 6.83602 4.75 7.33367Z"
+            stroke="#1D1D1D"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
+
+        <Input placeholder="Recherche sur le site..." />
+      </div>
+      <Button variant="contained" color="secondary"> Valider </Button>
     </div>
 
-    <div class="w-full mb-10 flex flex-row justify-between h-[322px] gap-x-10">
-      <article
-        style={`background-image: url(${featuredArticle.image});`}
-        class={`flex flex-row justify-between relative w-full h-full bg-cover bg-repeat relative rounded-2xl overflow-hidden`}
+    <div
+      class="w-full grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 gap-6 mt-6 max-h-[378px]"
+    >
+      <div
+        class="col-span-1 sm:col-span-1 xl:col-span-3 lg:col-span-2 md:col-span-2 relative max-h-[378px]"
       >
-        <!-- Badge -->
-        {
-          featuredArticle.badge && (
-            <Badge
-              class="absolute top-4 left-4 z-10 bg-white border-white"
-              variant="outlined"
-            >
-              {featuredArticle.badge}
-            </Badge>
-          )
-        }
-
-        <div class="w-full flex flex-row justify-end p-4">
-          <div class="relative">
-            <BadgeCorner orientation="vertical" position="right" class=""
-              >Dossier</BadgeCorner
-            >
-            <div
-              class="z-10 rounded-2xl relative flex flex-col justify-between h-full aspect-[1.3/1] bg-card-foreground text-primary-foreground p-3 flex flex-col justify-between"
-            >
-              <!-- Métadonnées -->
-              <div
-                class="w-full flex flex-row justify-between gap-4 text-[12px] font-[300] mb-4"
+        <article
+          style={`background-image: url(${featuredArticle.image});`}
+          class={`flex flex-row justify-between relative w-full lg:h-full md:h-full h-[378px] bg-cover bg-repeat relative rounded-2xl overflow-hidden`}
+        >
+          <!-- Badge -->
+          {
+            featuredArticle.badge && (
+              <Badge
+                class="absolute top-4 left-4 z-10 bg-white border-white"
+                variant="outlined"
               >
-                <span>{featuredArticle.date}</span>
-                <span>{featuredArticle.readTime}</span>
-              </div>
-              <div class="flex-1 pt-3">
-                <!-- Catégorie -->
-                <p class="text-[12px] font-[300] mb-2">
-                  {featuredArticle.category}
-                </p>
+                {featuredArticle.badge}
+              </Badge>
+            )
+          }
 
-                <!-- Titre -->
-                <h2
-                  class="text-[28px] md:text-3xl text-white font-bold mb-4 leading-none"
+          <div
+            class="w-full flex flex-row justify-end p-4 lg:items-stretch md:items-end items-end"
+          >
+            <div class="relative">
+              <BadgeCorner
+                orientation="vertical"
+                position="right"
+                class="lg:visible md:invisible invisible">Dossier</BadgeCorner
+              >
+              <BadgeCorner
+                orientation="horizontal"
+                position="left"
+                class="lg:invisible md:visible visible">Dossier</BadgeCorner
+              >
+              <div
+                class="z-10 rounded-2xl relative flex flex-col justify-between lg:h-full md:h-fit h-fit lg:aspect-[1.3/1] md:aspect-auto aspect-auto bg-card-foreground text-primary-foreground p-3 flex flex-col justify-between"
+              >
+                <!-- Métadonnées -->
+                <div
+                  class="w-full flex flex-row justify-between gap-4 text-[12px] font-[300] mb-4"
                 >
-                  {featuredArticle.title}
-                </h2>
+                  <span>{featuredArticle.date}</span>
+                  <span>{featuredArticle.readTime}</span>
+                </div>
+                <div class="flex-1 pt-3">
+                  <!-- Catégorie -->
+                  <p class="text-[12px] font-[300] mb-2">
+                    {featuredArticle.category}
+                  </p>
 
-                <!-- Excerpt -->
-                <p class="text-[12px] font-[300]">
-                  {featuredArticle.excerpt}
-                </p>
-                <!-- Lien -->
-                <a
-                  href={featuredArticle.link}
-                  class="inline-flex items-center gap-2 text-primary hover:text-white stroke-primary hover:stroke-white transition-colors font-semibold text-sm group"
-                >
-                  Lire plus
-                  <svg
-                    width="19"
-                    height="19"
-                    viewBox="0 0 19 19"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+                  <!-- Titre -->
+                  <h2
+                    class="text-[28px] md:text-3xl text-white font-bold mb-4 leading-none line-clamp-1 md:line-clamp-2 lg:line-clamp-3"
                   >
-                    <path
-                      d="M3.74997 6.50003L8.25003 6.50003M8.25003 6.50003L8.25006 11.0001M8.25003 6.50003L2.25 12.5"
-                      stroke="current"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"></path>
-                  </svg>
-                </a>
+                    {featuredArticle.title}
+                  </h2>
+
+                  <!-- Excerpt -->
+                  <p
+                    class="text-[12px] font-[300] line-clamp-2 md:line-clamp-3 lg:line-clamp-5"
+                  >
+                    {featuredArticle.excerpt}
+                  </p>
+                  <!-- Lien -->
+                  <a
+                    href={featuredArticle.link}
+                    class="inline-flex items-center gap-2 text-primary hover:text-white stroke-primary hover:stroke-white transition-colors font-semibold text-sm group"
+                  >
+                    Lire plus
+                    <svg
+                      width="19"
+                      height="19"
+                      viewBox="0 0 19 19"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M3.74997 6.50003L8.25003 6.50003M8.25003 6.50003L8.25006 11.0001M8.25003 6.50003L2.25 12.5"
+                        stroke="current"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                    </svg>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </article>
+        </article>
+      </div>
 
       <!-- Colonne droite : Événements à venir (1/3) -->
       <div
         class="bg-primary text-secondary rounded-2xl px-4 py-6 shadow-lg w-fit"
       >
-        <h2 class="text-2xl font-bold mb-8">Évènements à venir</h2>
+        <h2 class="text-2xl font-bold lg:mb-8 md:mb-1 mb-[2px] leading-none">
+          Évènements à venir
+        </h2>
 
-        <div class="space-y-4 mb-8">
+        <div class="space-y-4 lg:mb-8 md:mb-1 mb-[2px]">
           {
             upcomingEvents.map((event) => (
-              <div class="flex flex-row justify-center items-center gap-x-3 gap-y-3 pb-3 border-b-1 border-[#DF877E]">
+              <div class="flex flex-row justify-center items-center lg:gap-x-3 lg:gap-y-3 lg:pb-3 md:gap-x-2 md:gap-y-2 md:pb-2 gap-x-[5px] gap-y-[5px] pb-[5px] border-b-1 border-[#DF877E]">
                 <Badge
                   variant="outlined"
                   color="secondary"
@@ -166,7 +206,9 @@ const featuredArticle: Article = articles[0];
     </div>
 
     <!-- Grille d'articles (4 articles) -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 gap-6 mt-6"
+    >
       {
         articles.map((article) => (
           <article
