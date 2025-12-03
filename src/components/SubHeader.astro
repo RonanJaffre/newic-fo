@@ -1,0 +1,63 @@
+---
+import type { JSX } from "astro/jsx-runtime";
+
+interface Props {
+  title: JSX.Element;
+  leftContent?: JSX.Element;
+  rightContent?: JSX.Element;
+  height: number;
+  rightImg: string;
+}
+const { title, leftContent, rightContent, rightImg, height } = Astro.props;
+---
+
+<section class="bg-primary-foreground">
+  <div class="pt-4 pb-16">
+    <div
+      style={`height: ${height}px;`}
+      class="flex flex-col lg:flex-row lg:gap-12 md:gap-6 gap-3 justify-between items-center flew-wrap"
+    >
+      <!-- Left Section - Engagement -->
+      <div
+        class="w-full md:w-full lg:w-[30%] flex flex-col justify-between h-[full] gap-y-8"
+      >
+        <div>
+          <h1
+            class="text-[48px] lg:text-[64px] font-bold text-secondary leading-none z-2 relative"
+          >
+            {title}
+          </h1>
+          {leftContent}
+        </div>
+      </div>
+      <div
+        style={`background-image: url("${rightImg}")`}
+        class="w-full md:w-full lg:w-[70%] bg-image relative rounded-xl overflow-hidden shadow-2xl"
+      >
+        {
+          rightContent && (
+            <div class="relative p-4 flex items-center justify-end h-full">
+              <div class="bg-gradient-to-br bg-primary text-white rounded-xl px-7 py-4 shadow-2xl lg:w-[318px] md:w-[318px] w-[full] h-full">
+                {rightContent}
+              </div>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .bg-image {
+      background-repeat: repeat;
+      background-size: cover;
+      height: 100%;
+    }
+    @media (max-width: 1023px) {
+      .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+    }
+  </style>
+</section>

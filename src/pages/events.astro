@@ -3,41 +3,23 @@ import Layout from "../components/layout/Layout.astro";
 import Partner from "@/components/home/Partner.astro";
 import Region from "@/components/home/Region.astro";
 import EventsList from "@/components/events/EventsList.astro";
+import SubHeader from "@/components/SubHeader.astro";
+import Container from "@/components/layout/Container.astro";
 
 // Récupération des articles
 ---
 
 <Layout title="Événements" description="Découvrez les prochains événements">
-  <section class="mt-4 mb-16 bg-white max-h-[264px]">
-    <div class="">
-      <div class="flex flex-row gap-12 justify-between items-center">
-        <!-- Left Section - Engagement -->
-        <div class="w-[30%] flex flex-col justify-between h-[full] gap-y-8">
-          <div>
-            <h1
-              class="text-5xl lg:text-8xl font-bold text-secondary leading-none whitespace-nowrap z-2 relative"
-            >
-              Evènements à venir
-            </h1>
-          </div>
-        </div>
-        <div
-          class="w-[70%] h-[264px] bg-image relative rounded-xl overflow-hidden shadow-2xl"
-        >
-        </div>
-      </div>
-    </div>
-  </section>
-  <Partner />
-  <Region />
-  <EventsList />
+  <Container class="bg-primary-foreground">
+    <SubHeader
+      rightImg="../../images/hero.jpg"
+      title={"Evènements à venir"}
+      height={264}
+    />
+  </Container>
+  <Container>
+    <Partner />
+    <Region />
+    <EventsList />
+  </Container>
 </Layout>
-
-<style>
-  .bg-image {
-    background-image: url("../../images/hero.jpg");
-    background-repeat: repeat;
-    background-size: cover;
-    height: 264px;
-  }
-</style>

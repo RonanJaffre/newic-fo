@@ -5,34 +5,25 @@ import Partner from "@/components/home/Partner.astro";
 import News from "@/components/home/News.astro";
 import Region from "@/components/home/Region.astro";
 import Representatives from "@/components/worker/Representatives.astro";
+import SubHeader from "@/components/SubHeader.astro";
+import Container from "@/components/layout/Container.astro";
 
 // Récupération des articles
 ---
 
 <Layout title="Home" description="">
-  <section class="mt-4 mb-16 bg-white max-h-[264px]">
-    <div class="">
-      <div class="flex flex-row gap-12 justify-between items-center">
-        <!-- Left Section - Engagement -->
-        <div class="w-[30%] flex flex-col justify-between h-[full] gap-y-8">
-          <div>
-            <h1
-              class="text-5xl lg:text-8xl font-bold text-secondary leading-none whitespace-nowrap z-2 relative"
-            >
-              Nos représentants
-            </h1>
-          </div>
-        </div>
-        <div
-          class="w-[70%] h-[264px] bg-image relative rounded-xl overflow-hidden shadow-2xl"
-        >
-        </div>
-      </div>
-    </div>
-  </section>
-  <Partner />
-  <Region />
-  <Representatives />
+  <Container class="bg-primary-foreground">
+    <SubHeader
+      rightImg="../../images/hero.jpg"
+      title={"Nos représentants"}
+      height={264}
+    />
+  </Container>
+  <Container>
+    <Partner />
+    <Region />
+    <Representatives />
+  </Container>
 </Layout>
 
 <style>

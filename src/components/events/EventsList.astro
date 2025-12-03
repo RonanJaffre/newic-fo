@@ -1,4 +1,7 @@
 ---
+import BadgeCorner from "../ui/BadgeCorner.astro";
+import Button from "../ui/Button.astro";
+
 // src/components/events/EventsList.astro
 
 interface Event {
@@ -20,7 +23,7 @@ const events: Event[] = [
     location: "Île de France",
     description:
       "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
-    image: "/images/events/event-1.jpg",
+    image: "/images/articles/coverNews.jpg",
     link: "/events/1",
   },
   {
@@ -30,7 +33,7 @@ const events: Event[] = [
     location: "Île de France",
     description:
       "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
-    image: "/images/events/event-2.jpg",
+    image: "/images/articles/coverNews.jpg",
     link: "/events/2",
   },
   {
@@ -40,7 +43,7 @@ const events: Event[] = [
     location: "Île de France",
     description:
       "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
-    image: "/images/events/event-3.jpg",
+    image: "/images/articles/coverNews.jpg",
     link: "/events/3",
   },
   {
@@ -50,7 +53,7 @@ const events: Event[] = [
     location: "Île de France",
     description:
       "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
-    image: "/images/events/event-4.jpg",
+    image: "/images/articles/coverNews.jpg",
     link: "/events/4",
   },
   {
@@ -60,7 +63,7 @@ const events: Event[] = [
     location: "Île de France",
     description:
       "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
-    image: "/images/events/event-5.jpg",
+    image: "/images/articles/coverNews.jpg",
     link: "/events/5",
   },
   {
@@ -70,7 +73,7 @@ const events: Event[] = [
     location: "Île de France",
     description:
       "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
-    image: "/images/events/event-6.jpg",
+    image: "/images/articles/coverNews.jpg",
     link: "/events/6",
   },
   {
@@ -80,7 +83,7 @@ const events: Event[] = [
     location: "Île de France",
     description:
       "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
-    image: "/images/events/event-7.jpg",
+    image: "/images/articles/coverNews.jpg",
     link: "/events/7",
   },
   {
@@ -90,7 +93,7 @@ const events: Event[] = [
     location: "Île de France",
     description:
       "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
-    image: "/images/events/event-8.jpg",
+    image: "/images/articles/coverNews.jpg",
     link: "/events/8",
   },
   {
@@ -100,13 +103,13 @@ const events: Event[] = [
     location: "Île de France",
     description:
       "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
-    image: "/images/events/event-9.jpg",
+    image: "/images/articles/coverNews.jpg",
     link: "/events/9",
   },
 ];
 ---
 
-<section class="py-16 bg-gray-50">
+<section class="py-16">
   <div class="container mx-auto px-4">
     <!-- En-tête avec titre et bouton menu -->
     <div class="flex items-center justify-between mb-10">
@@ -140,46 +143,25 @@ const events: Event[] = [
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {
         events.map((event) => (
-          <article class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow group">
+          <article class="bg-white rounded-2xl overflow-hidden  transition-shadow group">
             {/* Image */}
             <div class="relative h-48 bg-gray-200 overflow-hidden">
               {/* Badge catégorie */}
-              <div class="absolute top-3 left-3 z-10">
-                <span class="bg-primary text-white px-3 py-1.5 rounded-md text-xs font-semibold">
-                  {event.category}
-                </span>
-              </div>
+              <BadgeCorner orientation="horizontal" position="left">
+                {event.category}
+              </BadgeCorner>
 
-              {/* Image placeholder ou réelle */}
-              {event.image ? (
-                <img
-                  src={event.image}
-                  alt={event.title}
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              ) : (
-                <div class="absolute inset-0 flex items-center justify-center text-gray-400">
-                  <svg
-                    class="w-16 h-16"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
-                      d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-              )}
+              <img
+                src={event.image}
+                alt={event.title}
+                class="w-full h-full object-cover  transition-transform duration-300"
+              />
             </div>
 
             {/* Contenu */}
             <div class="p-5">
               {/* Titre */}
-              <h3 class="text-lg font-bold text-gray-900 mb-2 line-clamp-2">
+              <h3 class="text-[22px] font-bold text-gray-900 mb-2 line-clamp-2 leading-none">
                 {event.title}
               </h3>
 
@@ -187,29 +169,29 @@ const events: Event[] = [
               <p class="text-sm text-gray-600 mb-3">{event.location}</p>
 
               {/* Description */}
-              <p class="text-sm text-gray-600 mb-4 line-clamp-3">
+              <p class="text-sm text-gray-600 mb-4 line-clamp-3 leading-none">
                 {event.description}
               </p>
 
               {/* Bouton Lire plus */}
-              <a
-                href={event.link}
-                class="inline-flex items-center gap-2 bg-primary hover:bg-secondary text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-              >
-                Lire plus
-                <svg
-                  class="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
+              <a href={event.link}>
+                <Button class="p-1">
+                  Inscription
+                  {/* Lire plus
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg> */}
+                </Button>
               </a>
             </div>
           </article>
