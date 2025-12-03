@@ -54,70 +54,35 @@ const fonctionsSyndicales = [
   <!-- Hero Section -->
   <Container class="bg-primary-foreground">
     <SubHeader
-      rightImg="../../images/hero.jpg"
+      rightImg="../../images/about-us.jpg"
       title={"Qui sommes-nous ?"}
       height={264}
     />
   </Container>
   <!-- Main Content -->
-  <Container>
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          <!-- Sidebar - Sommaire -->
-          <aside class="lg:col-span-1">
-            <div
-              class="bg-white rounded-2xl p-6 sticky top-24 border-2 border-gray-200"
-            >
-              <h3 class="font-bold text-primary text-lg mb-4">Sommaire</h3>
-              <nav>
-                <ul class="space-y-3">
-                  {
-                    sommaire.map((item) => (
-                      <li>
-                        <a
-                          href={`#${item.id}`}
-                          class="text-gray-700 hover:text-primary transition-colors text-sm block py-1"
-                        >
-                          {item.label}
-                        </a>
-                      </li>
-                    ))
-                  }
-                </ul>
-              </nav>
-              <div class="mt-6 pt-6 border-t border-gray-200">
-                <p class="font-bold text-secondary">David Muzelle</p>
-              </div>
-            </div>
-          </aside>
+  <Container class="max-w-[1002px] mx-auto">
+    <section class="py-16">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <!-- Main Content -->
+        <div class="lg:col-span-2 space-y-16">
+          <!-- David Muzelle Section -->
+          <article id="david-muzelle" class="scroll-mt-24">
+            <h2 class="text-4xl font-bold text-secondary mb-6">
+              David Muzelle, Secrétaire Général.
+            </h2>
 
-          <!-- Main Content -->
-          <div class="lg:col-span-2 space-y-16">
-            <!-- David Muzelle Section -->
-            <article id="david-muzelle" class="scroll-mt-24">
-              <h2 class="text-4xl font-bold text-secondary mb-6">
-                David Muzelle, Secrétaire Général.
-              </h2>
-
-              <div
-                class="prose prose-lg max-w-none text-gray-700 space-y-4 mb-8"
-              >
-                <p class="text-primary font-semibold">
-                  « Chers amis, vous m'avez élu Secrétaire Général lors de notre
-                  AG du 8 décembre 2020, et c'est avec un immense honneur que
-                  j'endosse la responsabilité de cette mission.
-                </p>
-
-                <p>
-                  Très investi dans la vie syndicale depuis de nombreuses
-                  années, j'ai à cœur de jouer pleinement mon rôle face. Il doit
-                  servir à protéger l'intérêts des salariés, prendre en compte
-                  les complexités économiques dans lesquelles nos entreprises
-                  évoluent, et faire progresser leur statut social. »
-                </p>
-              </div>
-
+            <div class="prose prose-lg max-w-none text-gray-700 space-y-4 mb-8">
+              <p class="text-primary font-[400] text-[21]">
+                « Chers amis, vous m’avez élu Secrétaire Général lors de notre
+                AG du 8 décembre 2020, et c’est avec un immense honneur que
+                j’endosse la responsabilité de cette mission. Trop souvent
+                décrié et mal apprécié dans les entreprises, le syndicalisme
+                doit trouver sa juste place. Il doit servir à protéger l’intérêt
+                des salariés, prendre en compte les complexités économiques dans
+                lesquelles nos entreprises évoluent, et faire progresser leur
+                statut social ! »
+              </p>
+              <p class="text-right"><b>David Muzelle</b></p>
               <!-- Image avec logo FO -->
               <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <div
@@ -133,83 +98,70 @@ const fonctionsSyndicales = [
                 <div class="space-y-4 text-gray-700">
                   <p>
                     FO Groupe Bouygues, est le syndicat référent et partenaire
-                    du Groupe Bouygues. Un syndicat historique, qui depuis 1977
+                    du Groupe Bouygues. Un syndicat historique, qui depuis 1977,
                     agit pour les salariés tout en préservant leur outil de
-                    travail : l'entreprise.
+                    travail : l’entreprise.
                   </p>
-
                   <p>
-                    Notre rôle est d'autant plus important que le centre de
-                    gravité du droit social se déplace vers l'entreprise. Les
+                    Notre rôle est d’autant plus impactant que le centre de
+                    gravité du droit social se déplace vers l’entreprise. Les
                     dernières évolutions législatives font peser de plus en plus
                     de responsabilités sur les Délégués Syndicaux en renvoyant
                     la gestion des relations sociales non plus vers le code du
-                    travail, mais vers les accords d'entreprise.
+                    travail, mais vers les accords d’entreprise. Il est donc
+                    plus que jamais, indispensable d’avoir des syndicats
+                    puissants et engagés afin que le progrès social reste le
+                    premier sujet de développement de notre Groupe !
+                  </p>
+                  <p>
+                    FO Groupe Bouygues, agit depuis plus de 45 ans pour que ses
+                    équipes soient formées, informées et accompagnées afin
+                    d’être toujours plus proches de vous !
+                  </p>
+                  <p>
+                    Je suis convaincu que la représentation du personnel dans
+                    l’entreprise est un enjeu majeur ; que c’est la garantie
+                    d’un dialogue social de qualité, engagé et responsable ; et
+                    je consacrerai ce mandat à continuer le travail engagé par
+                    mes prédécesseurs, tout en relevant les défis qu’attend le
+                    développement de notre Groupe.
                   </p>
                 </div>
               </div>
-
-              <div class="prose prose-lg max-w-none text-gray-700 space-y-4">
-                <p>
-                  Il est donc plus qu'indispensable de se doter de syndicats
-                  puissants et engagés afin que le progrès social reste le
-                  premier sujet de développement de notre Groupe !
-                </p>
-
-                <p>
-                  FO Groupe Bouygues, agit depuis plus de 45 ans pour que ses
-                  équipes soient formées, informées et accompagnées afin d'être
-                  toujours plus proches de vous !
-                </p>
-
-                <p>
-                  Je suis convaincu que la représentation du personnel dans
-                  l'entreprise est un enjeu majeur ; que c'est la garantie d'un
-                  dialogue social de qualité dans nos entreprises. Je vais
-                  consacrer ce mandat à continuer le travail engagé par mes
-                  prédécesseurs, tout en relevant les défis quotidien le
-                  développement de notre Groupe.
-                </p>
-              </div>
-            </article>
+            </div>
 
             <!-- Notre Histoire Section -->
-            <article id="notre-histoire" class="scroll-mt-24">
-              <h2 class="text-4xl font-bold text-secondary mb-6">
+            <article id="notre-histoire" class="scroll-mt-24 mb-4">
+              <h2 class="text-[32px] font-[700] text-secondary mb-2">
                 Notre histoire.
               </h2>
-
               <div class="prose prose-lg max-w-none text-gray-700 space-y-4">
                 <p>
                   Le Syndicat Autonome Bouygues (SAB) a été créé en 1968, suite
                   aux accords de Grenelle qui autorisaient enfin la création de
-                  sections syndicales d'entreprise.
+                  sections syndicales d’entreprise.
                 </p>
-
                 <p>
-                  C'est en 1977 que les adhérents du SAB ont demandé
-                  l'affiliation du syndicat autonome à la Confédération Force
-                  Ouvrière. En effet, à nouveau ils devaient sécuriser notre
-                  statut d'un syndicat représentatif au niveau national, qui
-                  puisse participer aux négociations de Branches, et faire
-                  valoir l'intérêt des salariés du Groupe au niveau de notre
-                  Convention Collective.
+                  C’est en 1977 que les adhérents du SAB ont demandé
+                  l’affiliation du syndicat autonome à la Confédération Force
+                  Ouvrière. En effet, il apparaissait nécessaire que le Groupe
+                  Bouygues se dote d’un syndicat représentatif au niveau
+                  national, qui puisse participer aux négociations de Branches,
+                  et faire valoir l’intérêt des salariés du Groupe au niveau de
+                  notre Convention Collective.
                 </p>
-
-                <p class="font-bold text-secondary">
-                  Le SAB est alors devenu Syndicat National Force Ouvrière du
-                  Groupe Bouygues.
-                </p>
-
                 <p>
-                  À l'époque nous représentions 12% des voix. Aujourd'hui FO
-                  Groupe Bouygues c'est plus de 50% des voix sur l'ensemble des
+                  <b
+                    >Le SAB est alors devenu Syndicat National Force Ouvrière du
+                    Groupe Bouygues.</b
+                  >
+                </p>
+                <p>
+                  A l’époque nous représentions 12% des voix. Aujourd’hui FO
+                  Groupe Bouygues c’est plus de 50% des voix sur l’ensemble des
                   sociétés du Groupe !
                 </p>
-
-                <p class="font-bold text-secondary">
-                  FO Groupe Bouygues défend :
-                </p>
+                <p><b> FO Groupe Bouygues défend :</b></p>
               </div>
 
               <!-- Grille des défenses -->
@@ -247,8 +199,8 @@ const fonctionsSyndicales = [
             </article>
 
             <!-- Nos Valeurs Section -->
-            <article id="nos-valeurs" class="scroll-mt-24">
-              <h2 class="text-4xl font-bold text-secondary mb-6">
+            <article id="nos-valeurs" class="scroll-mt-24 mb-4">
+              <h2 class="text-[32px] font-[700] text-secondary mb-2">
                 Nos valeurs.
               </h2>
 
@@ -256,37 +208,30 @@ const fonctionsSyndicales = [
                 class="prose prose-lg max-w-none text-gray-700 space-y-4 mb-8"
               >
                 <p>
-                  Nous sommes un syndicat <strong>apolitique</strong>, libre de
-                  nos choix et de nos orientations, à l'écoute et au service des
-                  salariés.
+                  Nous sommes un syndicat apolitique, <b>libre de nos choix</b> et
+                  de nos orientations, à l’écoute et au service des salariés.
                 </p>
-
                 <p>
-                  Nous voulons être <strong>un syndicat de proposition</strong> constructif
-                  et déterminés, pragmatique et réaliste, solidaire et engagée. Nos
+                  Nous voulons être une <b>force de proposition</b> constructive
+                  et déterminée, pragmatique et réaliste, solidaire et engagée. Nos
                   actions sont avant tout le reflet des demandes exprimées par les
                   salariés.
                 </p>
-
                 <p>
-                  Nous défendons <strong
-                    >la consultation et la négociation</strong
-                  > dans nos relations avec la Direction, avec la volonté de faire
-                  aboutir les demandes des salariés.
+                  Nous privilégions <b>la concertation et la négociation</b> dans
+                  nos relations avec la Direction, avec la volonté de faire aboutir
+                  les demandes des salariés.
                 </p>
-
                 <p>
                   Nous sommes convaincus que le syndicalisme en entreprise est
-                  une
-                  <strong>réponse concrète</strong> et adaptée aux attentes et aux
-                  préoccupations des salariés.
+                  une <b>réponse concrète</b> et adaptée aux attentes et aux préoccupations
+                  des salariés.
                 </p>
-
                 <p>
-                  En tant qu'acteur des conditions de travail, du dialogue
-                  social et de sa protection juridique, nous voulons être <strong
-                    >partie prenante des préoccupations environnementales</strong
-                  > et de la politique RSE de notre groupe.
+                  En tant qu’expert des conditions de travail, du dialogue
+                  social et de la protection juridique, nous voulons être
+                  <b>partie prenante des préoccupations environnementales</b> et
+                  de la politique RSE de notre groupe.
                 </p>
               </div>
 
@@ -313,8 +258,8 @@ const fonctionsSyndicales = [
             </article>
 
             <!-- Les fonctions syndicales Section -->
-            <article id="fonctions-syndicales" class="scroll-mt-24">
-              <h2 class="text-4xl font-bold text-secondary mb-6">
+            <article id="fonctions-syndicales" class="scroll-mt-24 mb-4">
+              <h2 class="text-[32px] font-[700] text-secondary mb-2">
                 Les fonctions syndicales.
               </h2>
 
@@ -323,36 +268,74 @@ const fonctionsSyndicales = [
                   Vestibulum vel hendrerit sapien, et consequat leo. Etiam
                   tincidunt interdum dapibus. Orci varius natoque penatibus et
                   magnis dis parturient montes, nascetur ridiculus mus. Aenean
-                  mollis enim eieu, in posuere sapien blandit ut. Phasellus ac
-                  lorem urna. Morbi in facilisis odio, nec elementum ligula.
+                  mollis enim arcu, in posuere sapien blandit ut. Phasellus ac
+                  lorem urna. Morbi in facilisis odio, nec elementum felis.
                 </p>
               </div>
 
               <!-- Liste des fonctions -->
-              <div class="space-y-3">
+              <div class="space-y-1">
                 {
                   fonctionsSyndicales.map((fonction) => (
-                    <div class="flex items-center justify-between bg-white p-4 rounded-lg border-l-4 border-primary">
+                    <div class="flex items-center justify-between bg-white">
                       <span class="font-medium text-gray-900">{fonction}</span>
-                      <div class="w-4 h-4 rounded-full bg-primary flex-shrink-0" />
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 14 14"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <rect
+                          x="0.5"
+                          y="0.5"
+                          width="13"
+                          height="13"
+                          rx="6.5"
+                          fill="var(--primary)"
+                        />
+                        <rect
+                          x="0.5"
+                          y="0.5"
+                          width="13"
+                          height="13"
+                          rx="6.5"
+                          stroke="var(--primary)"
+                        />
+                        <path
+                          d="M6 4L9 7L6 10"
+                          stroke="#F8F8F8"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
                     </div>
                   ))
                 }
               </div>
             </article>
-          </div>
+          </article>
         </div>
+        <aside class="lg:col-span-1">
+          <!-- Sidebar - Sommaire -->
+          <div
+            class="sticky top-24 flex flex-col border border-primary p-3 rounded-lg text-sm text-gray-600 min-w-fit"
+          >
+            <span class="py-2 text-red-700 rounded-full text-sm">
+              Sommaire :
+            </span>
+            <div class="flex flex-col gap-y-1">
+              {
+                sommaire.map((s) => (
+                  <span class="text-[14px] font-[700]">{s.label}</span>
+                ))
+              }
+            </div>
+          </div>
+        </aside>
       </div>
     </section>
   </Container>
+
+  <style></style>
 </Layout>
-
-<style>
-  .scroll-mt-24 {
-    scroll-margin-top: 6rem;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-</style>

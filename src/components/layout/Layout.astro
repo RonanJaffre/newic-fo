@@ -48,9 +48,17 @@ const fullTitle = title ? `${title} | ${siteTitle}` : siteTitle;
   </head>
   <body class="bg-white">
     <Header />
-    <main class="min-h-screen">
+    <main class="min-h-screen main-section">
       <slot />
     </main>
     <Footer />
   </body>
 </html>
+<style>
+  body {
+    overflow: auto;
+    overflow-x: hidden;
+    width: 100vw;
+    height: 100vh;
+  }
+</style>

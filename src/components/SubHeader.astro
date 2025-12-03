@@ -32,12 +32,12 @@ const { title, leftContent, rightContent, rightImg, height } = Astro.props;
       </div>
       <div
         style={`background-image: url("${rightImg}")`}
-        class="w-full md:w-full lg:w-[70%] bg-image relative rounded-xl overflow-hidden shadow-2xl"
+        class="w-full md:w-full lg:w-[70%] bg-image relative rounded-xl overflow-hidden"
       >
         {
           rightContent && (
             <div class="relative p-4 flex items-center justify-end h-full">
-              <div class="bg-gradient-to-br bg-primary text-white rounded-xl px-7 py-4 shadow-2xl lg:w-[318px] md:w-[318px] w-[full] h-full">
+              <div class="bg-gradient-to-br bg-primary text-white rounded-xl px-7 py-4 lg:w-[318px] md:w-[318px] w-[full] h-full">
                 {rightContent}
               </div>
             </div>

@@ -1,4 +1,7 @@
 ---
+import BadgeCorner from "../ui/BadgeCorner.astro";
+import Button from "../ui/Button.astro";
+
 // src/components/home/Representatives.astro
 
 interface Representative {
@@ -11,6 +14,8 @@ interface Representative {
   badge?: "Bouygues Telecom" | "Bouygues Telecom" | string;
 }
 
+const image =
+  "data:image/jpg;base64,/9j/4AAQSkZJRgABAgEASABIAAD/2wBDAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQH/2wBDAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQH/wAARCACgAOADAREAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD94/2iP2hvGHxm8Za4TreoWvgO01C7tPDHhq2umg00aXBN5VtfX9tbusV/qWoLCl7cTXTXRtpJ2tbORbWKNa9GnTjCK097q+t+y7LofP4nETrTl7zVNNqMVorJ6Nrq3u73tstD5vxnAA+v+c/Xj/8AUNDmJFX1/l9P8njNAE6pz04+hHP0/D8vxwASqnI4479un6/gecfiaAJhH7HOSe4//VyMf54AJQmR059fx44/lz1PSgCVYx9Me2f65zz/AJ6UASiP6nr/AJ/yetAD1T24P0xj6Dr7Z598ZoAd5eP8f0H5/p0xQA/yuv8AkA88nt1GOwx+dADvL9vT19B+PfnH64NACiPrgfh9R+Xfp+nSgAMft+WeQfp19889xQAhi7nPHpz/APqHHbp6egA3y+cc5/D/AA6e/T9aAGmP34/X/D8/rQAwx9ePpjjPbt+PU+tADDGB9fr/APrH6fXrQBEU9fpxz9P5nqPz6UARNH254/n+mM+v8u4BE0f3sZ5PJx2z9P8AOOtAETJz6/Qfpx/LpQBCY/xxn69PUcH8ufWgCEp26fqPryfb8eO2aAIsEdf5f5x/PFAH0h+zz+0T4y+DPi/RMa5qF34DudQtrbxL4Yu7uafSzps7pb3OoWNtL5yafqVhCy3UNxZJBJc/ZI7O6aW1Yx1nUpxmnoubo+t/Pujpw+InRnH3m6ba5ot6Wejavs1vpa9rPQ+cAMnt0+nXn2+oxn8q0OYmVD6fjg4+vJ68/lQBOqentk/556g/1oAnVD6j6euQe3U8e38iSATqg49f06e4GP6UATBOmf5fTjt1x9OBjtQBMIvb8/oMe31/HvQBKEHfpnH/ANft3P8AKgCVY/8A9Xvn6Efl347UASCMen5/T/6456D260APEZ78dB26fh/9b9KAHeXz/wDW9+3X09PagBRHzxz9efT6Y56+3pQB5J8VfjF4U+FFhYPq8v2zV9b1WLw9omlwyxRRya9f6fqF9o9prOpSkWPhuz1WTT3srTVNYltrRruaFBJ5fmyRROooeb6L8dX0X9dzajQnVel1FauVul0nyrTmab6aLq1dX+BvH37dekXHhj4gRW/im68Hw6Lc6xZ2PiTSBoU93eubMNJY6Rqxh8SaKH8K38d9bazrH2YrBaJGbUajfWN9O3NKu3dJ2V+lrtdr62t36+p6NPAwXK2uZ215k+VNX1adrp6e61o9WrH4+eMP2jPD8Oq6WvjD9qr4geMbSa1vn1l/DvjRZtVs9e1DVkl+z6Q+jeF9I1PxstyZLSHSp7P+wdMGtW9ozDTtG0+5uoMG295N9XqzuUYpNKnFdEkorTZbbW7dvPQ7v4Yf8FdPHfwc1vSdD1jxVrXxj8HS6forw6H8Sxo2neJ10dtMlmfU9L8fWEZv7TXLy5lSa78PfEVtemIS2ttO1y2tpo7mbSFecbXfMuz3+T3++5z1cFRqJuK9nN680b2+cb2+6x/Ql+zn+1B8Gv2o/CC+K/hP4rsNWntoLRvEvhWe4tovFfhC8ukfZZeItHSaSe0EkkNxHZX6CXS9UWCWbTry5iVmHbCcZq8X6rqvU8erRqUZcs427SXwy9H+m66o+hGT14P5+v8An29OtWZEZjz+X/6+e38z+GaQERj6dvoPTOfqfzxQBEU9sn6f/Wz1/MeozgAiMYOP8M/j39f8igCuyfXP+ewH+en0AImT/wCv74yPqOSee/8AIArugyfbv9ef688de/NAEDL1B/z70AQsMf5P14/l3+vegCwi9B265/E9vc57H6YoAsKuf8/Tqcen49KAJ1T+Q/L26+/GTgjtQBYRBz7fn34/z/8AqAJ1Tpgfn2+ntjHQDjA9KAJ1Qf4//XHYc/TIHuaAJQnr2/EH+v5//WoAnVPXIH4f0/woAlEft0559v5HPPbtnjqASBPrxgf5OT/kGgCQRgdvbPOD+OMYJH45x06ADtnt+ncDj/Aent0oAyNf1nTfDWl3Gr6vfWWn2Vt5aNPqF3DYWxllkWKGD7RcMsSyzSMscEeS0srLGgLMKUpKKuyoQdSSjFO/km7Lu7dD+U3/AIKrftAar4s8dWep6P4v0rxP8PtD1Jp9B0bQ9UZY9Tk07TIbDV7/AFXTVQG5ttPv5r9YEuTNBd295eNBLf6WdMvX86pLmk3e6PoMPT9nSinHlkk791d3te76WV9G7apbH4MePvjZ4w8QrdWaeJNdm0bUCWu7PUbprydgswmj8q8uWmuV3vEkUzrL5pighgmlu4IIUSDc8Ek1C7eeWWSWaVpZTNKZZJJGkd23u0jsS7SM+S0jMSzZ3FsnIBoWmoTpdLdrLIlwUWGRlfHmQqyOkRB/hTy1WMEBV2IBhVxQB9bfs1/tX/Ev9lj4leF/ip8NNTNlqmj3YTUtMupbkaP4q0CRrePUvDHiK1hdPtWj30CquziWwuLe11TT5I76zs5oqjJwkpLdfiuzM6tOFWDhNXT+9Po15r/gPQ/vy/Zz+N3hb9pT4H/Df43+Dt8eifEDw5a6uLKXPn6VqkMkun6/olySAHm0bXbPUNMeZR5N19kW6gLwTxu3pQkpxUl1X49fxPnqtN0qkqb3i9+63T+aPaWTrken6cD+ePXFMzIWTj1A9f6fT8O/FAETR9QBz6fz6nuP880AQMn0656dc/lx74PagCFk9foOev8AU49ePwzigCBkOMfr+vH5f4j1AIGQc4H+J3fy6Y55+vFAFZ0474//AF88dgPWgCuy4685z/8Aq9f896ALSqOO4HUcjtxx/XPNAFhV5z0xjt+n4fp6UAWFXOf884/p0/keKALCpntj0Hqen9MdKAJ1Tj0H+PI/D8SfX1oAnRP85P8AnA/x5zmgCdY+4H4k/j/n3oAmVPbP8v1wOvT+dAEyx9B29Pw55z2/U5/EAlCZHQcYx/nt6/j6GgCQR59c9entxxz065/+saAHiPPbP16/j/8AX7nPfNAH89f/AAW7/aJ1LwdrvwS+Blj4nvfDeha/pGt+PviCtvuFvf6L/a1joehm4aCE322wbT/E8ixW0rR3TTNFNA8qwbuTEyd4x6Wu/PovuserlsFy1Kmjd1Bd1ZXf33X3H4DftEfFTTNYs7dNMjle1tdMNnpU13bpZXi21xeXF00t3Yw3N9bwXF7A0Mt3DDdTJDcuyRy7YVA5T1D84r2VXkYhQOc4HHUk4wO2ST29+aAM4gHqP8/5/wAetAE0RUMAcD8OnIIwc+3fHp0JoA0i4aI5ycZwS3C5xyByM478flQB/YN/wbq/EWfxF+zR8ZfhvdT3Vw/w8+LtvrVkszyPBaaR488L6eIbSzaSRhGn9reFNbvZreGKKKOa9a4G+W6kYduGfuSXaX5r/gM8fMY2qwl/NC3zi/8AKSXyP6ESn+ef/r5/DH0roPOImjP/ANf9P8M/hxzQBCyAdsfkD7YwT0/TigCuyfTHr74/nj/PagCBkH1wen/1vy/P06gEDLj9c4J/P/E544+pAK7pwfT/AD/9b1z3oArsmM4H/wBb6/8A6+x56UAV2Xr0we3P49vy6e1AE6ryPyPHtkf/AKucd/cAsIufYe31/wA56f1oAtIue2f1/wA/5HrgAnVOmf8A646/Ufn9PagCyqdPrxjp6+mMH/PPQAnVPX+f+Gen+enIBYVO5HB/D8f6D60ATqmecAY6cD1P9ev8uaAJlT0/Mn/Pb27ZoAlCc+vXjrn/ACP8jFAEwj9ufbvnHA/X2zj60ASCPpj14/D+WOBz+HWgD+Tn/g4Y0m6Px7/Zxe0ja5m8S/DnUPD0Noiu5e6sfGsk0TBAH3l5NXtl8tAkr7FAckrs48T8UX/dt9zf+Z7GWv8AdVF2nf74r/Jn8/3xonvtP1KGyulkgd4QTDIVEoaMmOQGMMSqLMroGYLkoQvAbHMeifPxJJJPUnNACUAFAFgMWiYdx/8ArP8A+v3oA/rf/wCDbXwnqlr8JP2mfGs426N4g+Ifgjw1p3Db5NQ8KeHNV1LVX5GPLWDxdpSqVJ3P5obb5Q3dmGWkn5pfh/wTyMyfvUo9VGT+9pL8mf0psncj6f4EgdP154rpPNIWT2Ptjt1/Hj6YPf0oAgZOp685/wA8dvWgCB04PGPXP/189ug//VQBXZfw+gHHGc/gR79selAFZl65/rn06knHtzyePSgCuy+g4/Pv6e3r+PWgCu6emPT2/n/XntjuAVnX8s4/Lpn1556+3HSgCZV49B3578D/AA56d6ALKL/hnsD/APW/DnHTgUAWkXr7D046f4fp7UAWFXufzB6/l/8AWoAsqvTOe3XA5z9OP0/I8AFhV6HrnPHX2/z+WOKALKJnr/Pj8f8AD8/SgCcJ6/5/z69+2ODQBOqfyHb09sjrg9hx+QAJlT8vw/w69/0yOwBMqdOOnc+5H8s/zPegCQR+vqP/ANfPOfwzx6cgA/id/a88F+KrP/grHqvgj4ga/q+t6La/GV/Hnhaz13XrzU7TTPDPiSGy8f2Nvp0V3eXSabbiGayha1tREZ5LNIjAkiRJH51VNVJJ97r56n0OFaeHpNJL3UnZWu4+6/xR+NHxxvrzUPif4wuLtgxbXNQWDbjy0tY7h0to4jk/IsIXBBw33u9ZnQeR0AFABQA5WK5x3GKAP2P/AOCJWqfF7Xf26vgx4J8KfEbxtoXgLQ4vHvi/xl4W0/xDq8fhfUdCtfCl/wD2hZX/AIc3z6Fcx63rn/COW11LdWSSCVLO9trqDVLHTZ4tqHN7SKTaWra6Wt2210OPGqCoTk4xcnyxTaV730130V/x6Nn92jR459OP8cY79Pcc/Wu88IgZM9MZ9+f/ANfb8s5zQBAyYz+fp0z7dOmOM/nQBXZPQY/xz6/n7f0AK7L6Dp6d+f8A9fv0oAqsvcDp3+voPbp9D070AV3XGfrjH4fn/nigCq6/z4z/AJz7dx/KgCu69vy/D/P19+9AEqD0Az+P584/Tjjv0ABaVegA64Ge/wCPT9fw70AWYxjAz/n6/n/SgC0ig/Tp6+v5fqe/BIoAsxr6Y9h16fXv6YP4UAWEUH/OP/1/qMdutAFlVGOev1P4dD+X4fWgCwqcD+X645/DgYyeOaALCp7cnt1/z6+nTuKAJ1T1/L8u/wD9f8jQBOsfA/Tv+Ixxz6ehoAlCdfl/T/P+R7CgD+YH/guv+zfrfhD4l/C/9tnwbNbotkfD/hPxbZLbXgvW13RL77RoWqfaYbR9OktrvR4o9Jlt767s9RDafC+nm+gFxHpvHiYWan0ej9V/wD18uq3hKk94tyj/AIXul6O7+Z/Lx8ZobpfG+tyXsbRXbX10bhHABWTz3z90uuCANpV2UqRtZlINcx6R5FQAUAFAE0ETSuAv+fp/XOB7jrQB/Yb/AMG/X7F118P/AId+KP2uPHeiXNh4o+KUM3hL4WxahCIZYfhpaXFld6r4nt4WUTRJ4w1+0W1sppdrT6T4djvrYNp+sxT3HZh4WTm1q9F6d/meRmFbmkqMXdR1nb+bVJf9ur8X3R/R669Tj/Hj8cfjj8DXSeaVmXPOf0PP9f09KAK7Lx9Py5/QfXv7k0AV2UdcfU54/wAn+fJ4oAquO/8Aj/nrn0/M0AV3XGe+T6fXPX/J54oAquvX2wfUjHT8uBjrg+9AFV15PXsPfHXtxnkZ7fTrQBVde+Oev4e/OB6/r6mgCdFyen0569se/wDn1oAsIP8AP8x9c49eMdM0AWUH+eOcj19Bk/nzjpQBbRcEfhzz17D/AA6cUAWlGT/Pr078/jgD39KALKrjB9uB+n5e/vQBZRcnp34+p/z+tAFlVx9T2H+f85I+oBZVOmQM/wD18c4z7f5PIBZVf88duBx75H9e9AE6p35PHIxwD7//AF+nJoAmCev5fyz7+3P40ARXmmWOp272eo2Vrf2kjK0lre28N1byOjK8ZeC4SSNijgOpKthlyvODQF2ttD+A7/gtL8NbX4eft1fGKOytY7Sz8Salpvi6CKG3FvCD4m0mz1O48tFwm03UtxuZPlaTewC7sV51VWqT9b/fr+p9DhZc2HpP+6l/4D7v6H5D1mdAUAFAH77/APBvf8CfDnxV/al+JPi3xn4Z0bxV4Z+Hfwd1aH+zfEGkwaxo765461fTtBtPtVnfQ3Gm3Pm+HoPFVt9lvIZFkjnlmjQtbkjow8U5ttJpR6+en5XODMJuFKKi2nKa1Ts7RTfrvbY/tjgs7aytoLO0tobO0tIY7a0tbaKOC2traBFiht4IIlSKGCGJEjiijVUjjVUQBQBXaeKNZe/tjH6/5/Dt1AKzr+ft09c/T39+aAKzj29vTj+nTsTgdSKAKzrjnHp/nH5d/TFAFZxyfx/D8D9Tz0/lQBVYdyP5jnr+H1xwPagCo69x/wDXx9eM/QgfrQBWf1/z/j+A47/UAquPrznk/l179PryO5oAen+HHr+XHb6+p9QC0mMDv2PXPH+cj29KALSjtkge3f8AL/DFAFpMcf8A6sDp/X2xigC0nf8A+v1ycn36D/PUAtIv0P0wPw6eo54+uKALSDPTj9OvB9s4PT1OaALSL/n0PXuefXp7dM0AWkHHrkgjvzj6cHP+HuQC0i9MYycc/U//AF/T+VAFhVxgd/69/wDPsO9AFhU9P/re/qPTPf8ADigCdY/bP+f/ANWc59eM0Afycf8AByH8BbHTdX+C/wC0NppdLjxXa6n8N/E9sI8xG98ORDV/D2pLJuz593p2oajp88e3YIdIs2QhjIDyYmNnGXfR/Lb+vI9bLqjcZ03tFqS/7e3X3q/zP5RyMEj0Ncp6YlACgZIHuP8APFAH9dn/AAbceLvg7b+Cfjv4CtTLafHbU9c0zxVqovfJC638ONGtLfS9LXQWD+ayeH9d1i9bXoDGjLL4g0mbzJ4yiWfXhnH3l9rf1Xl6fqeVmSnenL/l2rr0k9dfVLT0Z/T26gZJ5Psf8jp/P1rqPLKrrx06nnj1/D8P8c5oArOO/wDn8fz+nOOwyAVXHQdffn8eueeeex6EcmgCs46j/P4fj079BxQBUcdevB6HsDweOSOn4dqAKzg8nsD/AJx/X8/YAFRx1HQdMc9Mdf8AOfx60AVXHpn29fT3IxzgdccUAVXGfT6ntz6/j/8AWoAVOg/P6gfUd8ccfmaALaDp3Hvz/LjOPw4zQBaTr/n/AD/n8wC0n1/D/wCv/L8cZHNAFpew9D25/Dvz7cj3xQBaTPBPr/8AqHr1x247+tAFtP8AH9cf4UAWk6D8c/1+vH+FAFpeMZ7evUjj/P0680AW0HPHQcY9v8++eKALKAe+P5euOevp09u+AC1GMdvTj+Q6f075zg8AFpF7e/fr755Ge/I9h70Afzkf8HIOu6BB+z78CfDF1cR/8JBqHxO1nX7Kx82PzG0XR/Dh07VbowlvOKJfa9o8McgTyt0kgaRZAgbmxLVorrdv5WPSy1Pnqu2nLFX827pfcmfxXyDEjj/aOPpniuM9cZQA9PvDpwc89BjuaAPavhd8Y/HvwZ17RvG3wv8AGfiLwR460O9huND1vw7fTabdWKJd2l9cSTSRymO9t9TexgsdT0W7gk07UNPiaG9hntp54HabTum0+6JlGM04yipRe6auv68+h/fJ/wAEzf27dA/bn/Z90rxNf3NhZfGXwPBp/hr4x+GbdoIHTX0tQLbxjpdjGEaHw14zSGfUdPVI/J03UI9W0BZbg6QLq49ClUVSN/tLSS/X0Z4GKoOhUa3hK7g/K/wvzj18rPqfoi49gO+OuMHn17Voc5UcDg9+nHpz/wDr6GgCu+cZ68++f5+/P+cAFR8dfXP0Pf8AkRnigCq45POeeev9PQ0wKr8d8HoR7dDxnH/6qQFR/wBfp/PnPHpxwR6UAVX79OnI9/XPYYPp1/OgCo/cnPfpwPTp2/LpwfSgBU9D6+nTPOMcfp+HagC0h6e+M9D/APW60AWk69PXv7dMd8fl+lAFpOnX68f5/wA+lAFsdvfH5fhn9KALSdR3/wD1fjnv/nmgC0n+H+f856Z9KALKHPXAPTHTp7de5/woAtqeBx6HjjH06+v588UAW0PTPfnGe59vXPc/l0NAFpDx/Tr+fUevH6d6AGXuo2GlWc+oape2mnWFrG0tze31xFaWsEaAs8k1xcPHFGgAyzM4UDJz2A2lq3ZDScnaKbb2STb+5H5L/tZ/8Fkv2cf2eE1Dw54Ed/jJ8Q4EljWz0S4S18IaVcJuXfq/iB2Mt0IpVANro9rdGbDR/bLZ8GsJ4iK0j7z+5ff1+X3ndSy+pOzqP2ce28/u2XzfyP5LP+Ck/wC2t8R/2wfiN8Pdd8d3mmo3hXwAltFpGgiKLQtLvPGl/J4rntLO2xLdRTWOjt4T0nUft99e3Umo6VczzfZpZXtYuSc3N3l2+R6tGjChFxhs3dt7vS2v9L0PzIY7mJ9Sag1G0AKDj/DsevX6enegCeBj5m4nJPc+/wBeOcY/wFAH2T+xz+1X49/ZA+NPhT4yeAmku7rSJ/smv+G3v7iw0zxj4ZuXj/tfw1rEkKyk2d4iRyxSmCdrPUYLK/hjea1TNQm4SUl813XYyq0o1oOEuuz6xfRrzR/cx+xv/wAFHP2dv209Ht4vBGtv4Q+JUVqs2tfCbxhPa2fiq0lSEPeT6FIki2vizSIXEmzUtLC3KW6JNq2laQ8otx3wqwns7P8Ale/y7nh18LVoP3lzQ6Tje3z/AJX5PTs2fd7k8+uefwPPT3/+t2rQ5ys/rzk8H6f4/wD16AKjnk88DPt9enT/ACaAKj8A/iP6c0AVX6f5/P8ACgCq59+/5dPz68fiKAKr4yf1J+np+vv/ADAKr4Oe45/X68k+nqfwNADEz26e/wCPbsen86ALaH2I9ffqMfpj1HHU0AWk/wAemfcDPTnnHUHNAFpD25/zj8P09s88AFtD069uTnrz9RwO/wBO9AFlD0Pp34Pb+h9fz70AWkPI9Dg9x2znv0/LqPU0AWkPGPx/z29uuDx7mgC0h7dwfof8igC0jAANxgck9PXPsBjnP48UAfhD+2l/wWQ0X4W+PtW+FP7P8ej+JtS8Ixzp4z8dXsUeoaNBrD7oLXQ/D6GdLe8a1lWe41XUZop7ciCC3skMd4L9OWriGm4wtp9rf7ltp53PUw2Ai4qda+uqpp2sv7zWt3vZNW666L8Efj1/wUR+O/xk+0jxr8TNXuraVZlSyS4Wx06ISnc0NvYWQhtbeFWQYSOMbhjcclieaUpS1k2/X9FsvkelClTpq0IRivJav1e7+bPzB8V+LZb2e6kjumuPtMjSXFy24vPKSd2XZiSM4B2jBweeSKks8mllMpcscs0rSNznczAAt7fd9e/fsAQ0AFABQA5WK9PqPYj86ANeyvDC6upPmYAB/ugNnKgYAOfbGeuQBQB7N4H8Z6l4Z1TStb0bV7/Rtd0q8g1HTdY0u9k0/UtNv4JRNDeWd7BJDPa3McgV454XLxkDYFPUE0mmmrp6NPZo/qX/AOCff/BZ1Na/sP4Sftd6rAl7Iltp3hz41rbxW0F3M8pjt7X4j28HkwWr+W0MMPimytVSciNtdthcvdazJ10q+0Z/KX+f+f39zy8Tgd50F5un/wDIf/IvTt2P6Lba9tNRtLa/sLq3vbG9t4byyvLSaO4tby0uYlmtrm1uIWeG4gnhdJYJonZJY3R42ZSGPUeW007PRrRp7piOQc46YwPw+vtzj0FAFR2/wx9MdD7f55FAFZ/8+54/kPx/A0AVnIPrx37fX8PX60AU26HBA78fh+PY+3pQBVfp/T3/AMMZ/wDr0ANQ8/X8un+ef070AWUPQfj0GD/j/kc0AW0PQ/T9PbPt7Z/QAFlG6H/AnP8An6cUAWVJH6/5z/8Aq7ZxQBaQ4OOue/tjp+BoAtITx7dPr1/w/ryRQBYVhjk/nxj/AB9fqec9wCyrjIz6dM/1/XqcY7YoA/Mv/grH+1lH+y3+y1rH9kaj9g8ffFi5m8CeEjFMI7u0sHtvtXi/WoB8r4sdD3abHPGVNtqWt6ZKHD7FfKvPkhpvLRfq/wCu514KkqtZOSvGmud+bv7q+/XzSZ/CXeeLbmSO6nnnc3WrXVxqN5Juyzz3LBkV27+RAIrdewWJcYG3HnnvHnuqanJduxeQnkgE84A68Y/UH64yQQDmpZdw2Z4XIUZzx0/Pr37/AJgFXHOfbH86AFoAKACgAoAcrFTkf5/z75HtQBs2V8yOpBPykcZ/XBUgfUe+TjigD0fRNccyIplwBwW3NsBJ3sZGPVpGUDc3yr06EigD9u/+Ccn/AAVZ8W/syajpHwu+L9/qPjP4BXdxHa26mVtQ8Q/DQ3VyoOoeGsuZr/w9A0klxqXhlckJ5t3o4hvBLZ329Ks4aPWP4r0/yOLFYSNZOULRqrrsp+UvPs/v0P67vAHxC8GfFXwX4d+Ifw98R6d4r8F+K9Oj1XQNf0mbzbK/tJHeNiAypNBPbTxTWt7ZXUUN7YXsFxZXsEF1BLCncmpJNO6ezPElGUJOMk1KLs0/6+7utTqHbnnt+Xv/APW7nigRWZv5HA9u3+HPt60AVXPGf8f89M49MCgCq56f5/z7j2HHqAVX69vX3HscHn1/rQBGjE4Ppj8+/wDn3oAsqeh9Px/nz+eOfzoAtK3Gex/zn/EfgaALKsOP89cY68+/49KALKN+WOv6/wCen48UAWUbp/8Ar+n8v8joAWUb88//AKvqePyoAsox5568Y45/D1/yO9AEwlVVZ3YIqKWd3IVVVRkszEgAADcSeBjJNAH8Df8AwVn/AG1bn9rT9p7xNJoGqvd/Cf4areeBfhjBDK32G50+1uUTXfFUaK5hkn8X6vbyX6XgSOZ9Ch0CwnDnTI3rz60+ebfRaL/P5/lY+gwtH2NJJr35e9P1ey+S09b9z8s7m734wSBnoSeO3f0Ax2wQfQ1kdJlTTFiQPfnPvz/X09RxjABWoAKACgAoAKACgAoAfG21gfTt6+3+fx4zQBsQai0YCq23/dOD2yAeCOPTCkc80AbFtrToMBi2OgJLduBuHI6g+pOOKAP6r/8Ag3h+OWu+IPCnx7+BWrXNzeaP4R1Dw38RvC3nTyzR6UPFH2/RfEunQLLM629pc3ej6RqkNtaxwwpfXGrXUokmv3euvDS0lHtZr56P8keTmUEnTqLd3jLztZp+urXpbsf0mO2R+vOfTrk4/l+VdR5hWdu3XuP147n+vU9MUAVXbPPb8sf1/wDrnHvQBWY9T1647+/1/E0AVWOAeef8/wCfUUAQq3Q9vT+fp/8AroAtIc45IxwR+n45Ptgex4oAsxt+XX8c4xnI/rnHFAFlW6DP8h36Yx1Pfkn9aALKtwPr+Prk8euB9eaYFhHx06469c9frn1pAWFf355J9Meh9v8AECgCwsnrx7/hz/n3pgfi3/wWY/4KBy/sofB+D4Q/D2a1l+MXxt0PXNNS8F0BP4E8CzW8ml6n4mEEE8d0mtavLPPpnhaWQJaxz2er6izyS6XDa3PPXqci5V8Uk/ku/wDkd2Cw/tZucvgptdPilvbtZby66rufw3XNw07+YWYs2ctnkgkHBzk5Bx1JzXCe2RtJkD1x+X49zQBDQAUAFABQAUAFABQAUAFAB/L0oAkWR0wQxPfGcj8vfPTr6igD+nr/AINudFvZ/E/7VXioRp/Z9noHws8PPKzHzBe6jqPjPUo440I+ZBBpcrStn5WMIIIYV1YVazfkl+Z5eZPSkut5P8Ej+ql2P1POfX29Pw7Y9q6zyis7ds/X/wDX+WP1oArM35jtx1/LqOnX0PrgArOeTzxj68dz3/T+tAFVz3B/MHjrwB+v0oAhV/f3yO307dunPTAxQBZVugPPQfTt+P40AWUb36dPw9/bH1oAsK3v+PUdB37Hv/L1IBYVvXnPT/PT6Y/QUAWA/wDLjpjpz+Y6dfagCdXx7+/sev14z/8AqoA8k+P3xt8Kfs6fBj4jfGrxpKBoHw98Majr01qLiG2m1a9gj8vSdBsZZ2WL+0Nd1WSz0mxB3ZuruPKkZFKUlGLk9kvv8vmXTpurONOO8nb0XV/Jan+c5+0R8f8A4hftM/F7xr8ZfiVq0+peJfGOrz37RNPPJZaNpquyaT4f0eKeSVrPRtDsBBp2mWiNthtrdM7pGd282UnJuT3Z9HThGnCMIqyirevdvze7Z4hUlhQAUAFABQAUAFABQAUAFABQAUAFAH9kP/BuppYt/wBkT4wa1tj36l+0ZrWnEiC1WUpo/wANvhrcIHuUhW9lQPrEnlwXFxJbWzGWS0iglur17jtw3wS/xfojxsyf72C/6dp/fKX+R+/rOc+/p6dT+vvj6AkV0Hnld2/xz+ef8D68g0AV2br17jHHOB/jjvzzn3AKzN19vr259eD9Bntx0oAru/B4B7f/AF8+n/6zxQBWRvXOO3+ff3xj86ALKP3JPr+v+eh9xmgCyjds9Txz69f898/WgCdG9+MY9vUn06cf1xnABYV+nYcY7/n1/njjv0oAnV8Y7j/9X8ufzoAmV+OD9fbp7+n1xg8igD+Qr/gu5+3ppfxY8W6L+yf8JPFVnrPgT4d6lJrfxZ1TQrkXWna78RrZpbTTfCv26JfJu7bwNbm7l1JLOe4s5PEWpm1utuo+GgkPHiKnM+RPRavzfb5fn6HsYDD8kfbTTUpaQT6R7+svy9T+dKuY9EKACgAoAKACgAoAKACgAoAKACgAoAKAP7m/+CGXgo+D/wDgnp4B1d7SC0l+I/jr4l+OJWjR47i6EXiabwNbXd7uUbriSy8E2yW7rlJNNjsGRiDXfh1amvNt/jb9DwsfLmxEl/LGMfw5v/bvvP16Zs8ds/T2xnJzWxxldm9+PX/P5/XHQ8AArs/YHj+Z9B7fzoAru/rjuT17fXrznPUdO9AFZ3/ADPfr/nnvQBXV/f8A/X756fp7+tAFhX9+M5z+fH5+/ueDQBYV+/XjgfiO3t/nigCdX989h+H+enXp0oAnVu4/H/P8u+KAJ1f3A9Pr17989/pQB+WX/BW/9tCx/ZR/Zj8Q6N4b8RHTPjV8XrC88I/Dm3sLlIta0myuDDb+KvGabSZ7OHRNJuZrbTtRjWOWPxBfaWbRxJDNLBlWnyQdn70tF+r+X5nXg6HtqqbV6cNZdm+kfm912TP4PpJHld5JHaSSRmeR3JZ3diWZmY5LMxJJJOSTk1557wygAoAKACgAoAKACgAoAKACgAoAKACgAoA/0h/2RfAs3wt/ZY/Z2+Hl1ALa+8I/Bj4c6PqcJsf7PkXV4PCemHV2uLM5aC7l1N7qW9WQtK128zzMZWdq9OCtCK7RX5HzVaXPVqS7zk1rfS7t+B9Bs/r2HT8vXk5/Ljk1RmQM/PPc/wCPGR16/jQBAz+//wCod+hwQP5gcGgCuz9fT/Hjtx3xn0/OgCBmJzz1/l/PPfr7EUAVQcf57+v1/pQBOr9x+Iz/AJ/x+lAFhH9Py6n8sjrx9O1AE6v6e3+fXjv7e1AEyv05546j8OBzz+X06mgCO81C002yu9R1C4jtbHT7W4vb26mYJDb2lrE9xc3ErnhYoYI3kc9lUmgD/Pj/AOChv7WV9+2R+1F47+K0bTw+CbCVfBfwu02bzEax+H/hy4uotHup4JGY2+o+I7ie+8U6tb7nFpqOt3FjHJJb2sLV51SfPNvpsvRf57/M+iw9FUKUYfa+Kb7ye/yWy8kfEFZm4UAFABQAUAFABQAUAFABQAUAFABQAUAfVv7D3wOuf2i/2rvgd8KF06XU9I1zx7ol/wCL4URXSPwP4fu49d8YzTmT92kX/CP2F9DucODLNFGscrusT3CPNOMe719Ov4GVep7OlUnezUXy/wCJqy/E/wBFcFY0VI1VEQBEVQFVEVQFVVGAqqBhQAAAAAPT0j5sjL/j+Q9/6+nbFAEDOeefrjPXgDsRx789KAIGcd+n5/h1Jz+Hp7UAQMw/Dn8evpjn6k89+aAICcn6E4/zz/np2oA+j/2hv2d/GXwY8Ya1nRNRuvAdzqN1ceGvE9pazT6WdNnd7i20++uYvOTT9SsIWNrNb3rwyXJtZbu1WW1ZZKzp1Izitfetqut/LyOjEYedGcvdbp392VtLb2b6NbWe9rrQ+bwSOR/n/P581oc5Kr/gR6+3v/PigCZX7HrwPr2/l/X6UATK/vnj8fUc/oM+vTrQB+ef/BVj4qeIPhJ+wX8fPEfhW5lsdd1fRNG8DWl/C5jlsrTx14k0jwvrdxE6FJFn/sDU9VhtnjYPBczQzjIjZTnWbjTk1vovvdn+B04SCniKalqk3K3flTa/FI/gXrzj6AKACgAoAKACgAoAKACgAoAKACgAoAKACgD+rX/g33/ZdGg+DPiH+1l4l08DU/G00/w0+Gck8bh4PC2iX0V1421m38xPLePWvEdrpuiQXELebAfC2sWxYR3si12YaGjm+ui9Ov46fJnk5jVvKNFfZ96Xq/hXyWvzXY/pFaTr1x/+rsTx1GR/9euk8whMnp7/AMvTv+H5GgCFpO+fxP8A9f8AT9cYwQCEv+vTOOD0+oHY/T2oAjBOf1IHQ4+n6/jnvQB9H/s7fs8+L/jN4y0Mf2LqFr4DtNRtLvxP4luLV4NNGlQTebc2On3Nwghv9Sv0heyt4bUXRtpJ1uruJbWKRqzqVFCL197out/8jow+HnWnH3Wqd1zStpbqk3u3tpe270D/2Q==";
 // Données de démonstration - à remplacer par vos vraies données
 const representatives: Representative[] = [
   {
@@ -20,6 +25,7 @@ const representatives: Representative[] = [
     position: "Délégués Syndicaux",
     company: "Filiale Bouygues Telecom",
     badge: "Bouygues Telecom",
+    image,
   },
   {
     id: "2",
@@ -28,6 +34,7 @@ const representatives: Representative[] = [
     position: "Délégués Syndicaux",
     company: "Filiale Bouygues Telecom",
     badge: "Bouygues Telecom",
+    image,
   },
   {
     id: "3",
@@ -36,6 +43,7 @@ const representatives: Representative[] = [
     position: "Délégués Syndicaux",
     company: "Filiale Bouygues Telecom",
     badge: "Bouygues Telecom",
+    image,
   },
   {
     id: "4",
@@ -44,6 +52,7 @@ const representatives: Representative[] = [
     position: "Délégués Syndicaux",
     company: "Filiale Bouygues Telecom",
     badge: "Bouygues Telecom",
+    image,
   },
   {
     id: "5",
@@ -52,6 +61,7 @@ const representatives: Representative[] = [
     position: "Délégués Syndicaux",
     company: "Filiale Bouygues Telecom",
     badge: "Bouygues Telecom",
+    image,
   },
   {
     id: "6",
@@ -59,6 +69,7 @@ const representatives: Representative[] = [
     lastName: "ABDERRAHMAM",
     position: "Délégués Syndicaux",
     company: "Filiale Bouygues Telecom",
+    image,
   },
   {
     id: "7",
@@ -67,6 +78,7 @@ const representatives: Representative[] = [
     position: "Délégués Syndicaux",
     company: "Filiale Bouygues Telecom",
     badge: "Bouygues Telecom",
+    image,
   },
   {
     id: "8",
@@ -75,6 +87,7 @@ const representatives: Representative[] = [
     position: "Délégués Syndicaux",
     company: "Filiale Bouygues Telecom",
     badge: "Bouygues Telecom",
+    image,
   },
   {
     id: "9",
@@ -82,6 +95,7 @@ const representatives: Representative[] = [
     lastName: "ABDERRAHMAM",
     position: "Délégués Syndicaux",
     company: "Filiale Bouygues Telecom",
+    image,
   },
   {
     id: "10",
@@ -89,6 +103,7 @@ const representatives: Representative[] = [
     lastName: "ABDERRAHMAM",
     position: "Délégués Syndicaux",
     company: "Filiale Bouygues Telecom",
+    image,
   },
 ];
 ---
@@ -97,9 +112,7 @@ const representatives: Representative[] = [
   <div class="container mx-auto px-4">
     <!-- En-tête avec titre et bouton menu -->
     <div class="flex items-center justify-between mb-10">
-      <h2 class="text-3xl lg:text-4xl font-bold text-gray-900">
-        Représentants
-      </h2>
+      <h2 class="text-[14px] font-[700] text-card-foreground">Représentants</h2>
 
       <!-- Bouton hamburger menu -->
       <button
@@ -129,57 +142,48 @@ const representatives: Representative[] = [
     >
       {
         representatives.map((rep) => (
-          <article class="bg-gray-50 rounded-xl overflow-hidden hover:shadow-lg transition-shadow group">
-            {/* Image avec badge */}
-            <div class="relative bg-gray-300 h-48">
-              {/* Badge */}
-              {rep.badge && (
-                <div class="absolute top-3 left-3 z-10">
-                  <span class="bg-primary text-white px-3 py-1 rounded-md text-xs font-semibold">
-                    {rep.badge}
-                  </span>
-                </div>
-              )}
-
-              {/* Silhouette placeholder */}
-              <div class="absolute inset-0 flex items-end justify-center pb-4">
-                <svg
-                  class="w-full text-gray-400"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                </svg>
-              </div>
-
-              {rep.image && (
-                <img
-                  src={rep.image}
-                  alt={`${rep.name} ${rep.lastName}`}
-                  class="w-full h-full object-cover"
-                />
-              )}
+          <article class="bg-white rounded-2xl overflow-hidden  transition-shadow group">
+            {/* Image */}
+            <div class="relative h-48 rounded-2xl overflow-hidden">
+              <img
+                src={rep.image}
+                alt={rep.name}
+                class="w-full h-full object-cover  transition-transform duration-300"
+              />
             </div>
 
             {/* Contenu */}
-            <div class="p-4 bg-white">
-              {/* Nom */}
-              <h3 class="font-bold text-gray-900 text-lg mb-1">
-                {rep.name}
-                <br />
-                <span class="uppercase">{rep.lastName}</span>
-              </h3>
+            <div class="relative">
+              {rep.badge && (
+                <BadgeCorner
+                  orientation="horizontal"
+                  position="left"
+                  class="rounded-2xl"
+                  style="border-bottom-left-radius: 10px;"
+                >
+                  {rep.badge}
+                </BadgeCorner>
+              )}
+              <div class="relative z-10 py-5 bg-white">
+                {/* Titre */}
+                <h3 class="text-[22px] font-bold text-gray-900 mb-2 line-clamp-2 leading-none">
+                  {rep.name}
+                </h3>
 
-              {/* Position */}
-              <p class="text-sm text-gray-600 mb-2">{rep.position}</p>
+                {/* Localisation */}
+                <p class="text-sm text-gray-600 mb-3">{rep.lastName}</p>
+                <p class="text-sm text-gray-600 mb-3">{rep.position}</p>
 
-              {/* Company */}
-              <p class="text-xs text-gray-500 mb-4">{rep.company}</p>
+                {/* Description */}
+                <p class="text-sm text-gray-600 mb-4 line-clamp-3 leading-none">
+                  {rep.company}
+                </p>
 
-              {/* Bouton Contact */}
-              <button class="w-full bg-primary hover:bg-secondary text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
-                Contacter
-              </button>
+                {/* Bouton Lire plus */}
+                <a href={"/"}>
+                  <Button class="p-1">Contact</Button>
+                </a>
+              </div>
             </div>
           </article>
         ))

@@ -10,6 +10,7 @@ export interface Article {
   badge?: string;
   content?: string;
   tags?: string[];
+  summary?: string[];
   cover?: string;
   tagDescription?: string;
 }

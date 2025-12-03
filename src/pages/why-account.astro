@@ -6,33 +6,46 @@ import SubHeader from "@/components/SubHeader.astro";
 const benefits = [
   {
     id: "1",
-    icon: "document",
-    title: "Un accès à la documentation juridique",
-    description:
-      "Retrouvez vos accords d'entreprise grâce notre espace personnel à tout moment.",
-    image: "/images/why-account/team-1.jpg",
+    title: `
+      <span>
+        Accéder à de la <b>documentation juridique</b>.
+      </span>
+    `,
   },
   {
     id: "2",
-    icon: "tools",
-    title: "La boîte facilissité de votre CSE",
-    description: "Simplifiez tous vos documents, etc.l",
-    image: "/images/why-account/team-2.jpg",
+    title: `
+      <span>
+        Retrouver vos <b>accords d’entreprise</b> depuis votre espace personnel
+        à tout moment.
+      </span>
+    `,
   },
   {
     id: "3",
-    icon: "users",
-    title: "Il serait bien aussi de voir l'adhérer à FO Groupe Bouygues",
-    description: "en ligne.",
-    image: "/images/why-account/team-3.jpg",
+    title: `
+      <span>
+        Lire <b>toute l’actualité de votre CSE</b> (PV de CSE, Réponses aux
+        réclamations, etc…).
+      </span>
+    `,
   },
   {
     id: "4",
-    icon: "calendar",
-    title: "Egalement de pouvoir se consulter nos référents syndicaux",
-    description:
-      "sites internet, outils, sites web d'adhésion, référents syndicaux.",
-    image: "/images/why-account/team-4.jpg",
+    title: `
+      <span>
+        Et pour aller plus loin, d’<b>adhérer à FO Groupe Bouygues</b> en ligne.
+      </span>
+    `,
+  },
+  {
+    id: "5",
+    title: `
+      <span>
+        Bénéficier de <b>conseils</b> en contactant vos référents (Référents
+        retraite, référents juridiques, référents handicap…).
+      </span>
+    `,
   },
 ];
 
@@ -73,28 +86,29 @@ const adherezBenefits = [
 >
   <Container class="bg-primary-foreground">
     <SubHeader
-      rightImg="../../images/hero.jpg"
+      rightImg="../../images/why-account.jpg"
       title={"Pourquoi ouvrir un compte ?"}
       height={264}
     />
   </Container>
   <!-- Main Content -->
-  <Container>
-    <section class="py-16 bg-gray-50">
+  <Container class="max-w-[1002px] mx-auto">
+    <section class="py-16">
       <div class="container mx-auto px-4 max-w-6xl">
         <!-- Introduction -->
-        <div class="mb-16 text-center">
-          <h2 class="text-3xl lg:text-4xl font-bold text-secondary mb-6">
+        <div class="mb-16">
+          <h2
+            class="text-3xl lg:text[32] leading-[30px font-[700] text-secondary mb-3"
+          >
             Découvrez toutes les bonnes raisons d'ouvrir<br />
             votre compte personnel e-FO
           </h2>
-          <p class="text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            Débat iaculis sed conduit. Quisqua us nunc cras. <span
-              class="text-primary font-semibold"
-              >Etiam facilisis interdum dignions. Duis velan rutrum porttitius
-              et magna dis porttitor morbi. consectur ridaculus mus.</span
-            > Aenean cursus amet arcu, id posuere sapien blandit ut. Phasellus ac
-            lorem id urna. Etiam facilisis odio, nec elementum ligula.
+          <p class="text-primary leading-[21px] tex-[14px] font-[400]">
+            Vestibulum vel hendrerit sapien, et consequat leo. <b
+              >Etiam tincidunt interdum dapibus. Orci varius natoque penatibus
+              et magnis dis parturient montes, nascetur ridiculus mus</b
+            >. Aenean mollis enim arcu, in posuere sapien blandit ut. Phasellus
+            ac lorem urna. Morbi in facilisis odio, nec elementum felis.
           </p>
         </div>
 
@@ -125,15 +139,24 @@ const adherezBenefits = [
           <div class="space-y-6">
             {
               benefits.map((benefit, index) => (
-                <div class="flex items-start gap-4">
-                  <div class="flex-shrink-0 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm">
-                    {index + 1}
-                  </div>
+                <div class="flex items-center gap-4">
+                  <svg
+                    width="7"
+                    height="9"
+                    viewBox="0 0 7 9"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0.5 0.5L6.5 0.5L6.5 8.5L3.5 6L0.5 8.5L0.5 0.5Z"
+                      stroke="var(--primary)"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+
                   <div>
-                    <h3 class="font-bold text-gray-900 mb-1">
-                      {benefit.title}
-                    </h3>
-                    <p class="text-sm text-gray-600">{benefit.description}</p>
+                    <h3 class="font-400 text-[14px]" set:html={benefit.title} />
                   </div>
                 </div>
               ))
