@@ -33,13 +33,15 @@ const articles = await getAllNews(6);
 const featuredArticle: Article = articles[0];
 ---
 
-<section id="news-section" class="py-16">
+<section id="news-section" class="pt-2">
   <div class="">
     <!-- Onglets de navigation -->
     <div class="flex gap-3 mb-8 flex-wrap">
-      <Button> Toutes </Button>
-      <Button variant="outlined"> Actualités </Button>
-      <Button variant="outlined"> Dossiers </Button>
+      <div class="hidden ld:flex md:flex">
+        <Button> Toutes </Button>
+        <Button variant="outlined"> Actualités </Button>
+        <Button variant="outlined"> Dossiers </Button>
+      </div>
       <div
         class="border-b-1 border-b-primary flex flex-row items-center flex-1"
       >
@@ -59,7 +61,41 @@ const featuredArticle: Article = articles[0];
 
         <Input placeholder="Recherche sur le site..." />
       </div>
-      <Button variant="contained" color="secondary"> Valider </Button>
+      <Button variant="contained" color="secondary">
+        <svg
+          width="12"
+          height="12"
+          viewBox="0 0 12 12"
+          stroke="currentColor"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="flex lg:hidden md:hidden"
+        >
+          <path
+            d="M2.44454 9.63906L4.75 7.33361M4.75 7.33361C5.24765 7.83126 5.93515 8.13906 6.69454 8.13906C8.21333 8.13906 9.44454 6.90785 9.44454 5.38906C9.44454 3.87028 8.21333 2.63906 6.69454 2.63906C5.17576 2.63906 3.94454 3.87028 3.94454 5.38906C3.94454 6.14845 4.25235 6.83595 4.75 7.33361Z"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
+        <span class="hidden lg:flex md:flex">Valider</span>
+      </Button>
+      <Button
+        variant="contained"
+        color="primary"
+        class="flex lg:hidden md:hidden"
+        ><svg
+          width="12"
+          height="12"
+          viewBox="0 0 12 12"
+          stroke="currentColor"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9 4C9 4.82843 8.32843 5.5 7.5 5.5C6.67157 5.5 6 4.82843 6 4M9 4C9 3.17157 8.32843 2.5 7.5 2.5C6.67157 2.5 6 3.17157 6 4M9 4H10M6 4H2M3 8C3 8.82843 3.67157 9.5 4.5 9.5C5.32843 9.5 6 8.82843 6 8M3 8C3 7.17157 3.67157 6.5 4.5 6.5C5.32843 6.5 6 7.17157 6 8M3 8H2M6 8H10"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
+      </Button>
     </div>
 
     <div

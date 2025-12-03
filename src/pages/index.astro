@@ -12,8 +12,10 @@ import Container from "@/components/layout/Container.astro";
 <Layout title="Home" description="">
   <HeroEngagement />
   <Container>
-    <Partner />
-    <Region />
+    <div class="hidden lg:flex md:flex">
+      <Partner />
+      <Region />
+    </div>
     <News />
   </Container>
 </Layout>
