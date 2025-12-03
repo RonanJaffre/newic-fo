@@ -4,15 +4,18 @@ import HeroEngagement from "@/components/home/HeroEngagement.astro";
 import Partner from "@/components/home/Partner.astro";
 import News from "@/components/home/News.astro";
 import Region from "@/components/home/Region.astro";
+import Container from "@/components/layout/Container.astro";
 
 // Récupération des articles
 ---
 
 <Layout title="Home" description="">
   <HeroEngagement />
-  <Partner />
-  <Region />
-  <News />
+  <Container>
+    <Partner />
+    <Region />
+    <News />
+  </Container>
 </Layout>
 
 <style></style>

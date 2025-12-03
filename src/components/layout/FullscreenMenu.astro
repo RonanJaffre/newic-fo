@@ -1,6 +1,7 @@
 ---
 // src/components/layout/FullscreenMenu.astro
 import LogoPrimary from "../logo/LogoPrimary.astro";
+import LogoSecondary from "../logo/LogoSecondary.astro";
 
 interface MenuItem {
   label: string;
@@ -8,7 +9,7 @@ interface MenuItem {
 }
 
 const menuItems: MenuItem[] = [
-  { label: "Actualités", href: "/news" },
+  { label: "Actualités", href: "/#news-section" },
   { label: "Qui sommes-nous ?", href: "/about" },
   { label: "Vos représentants", href: "/worker" },
   { label: "Pourquoi ouvrir un compte ?", href: "/why-account" },
@@ -26,8 +27,7 @@ const menuItems: MenuItem[] = [
     <div class="p-6 flex items-center justify-between">
       <!-- Logo -->
       <div class="flex items-center gap-3">
-        <LogoPrimary />
-        <span class="text-white font-bold text-lg">Groupe Bouygues</span>
+        <LogoSecondary class="stroke-white text-white" />
       </div>
 
       <!-- Bouton Close -->
@@ -54,7 +54,7 @@ const menuItems: MenuItem[] = [
 
     <!-- Navigation items -->
     <nav class="flex-1 flex items-center justify-end">
-      <ul class="space-y-4 text-center">
+      <ul class="space-y-5 text-center">
         {
           menuItems.map((item, index) => (
             <li
@@ -63,7 +63,7 @@ const menuItems: MenuItem[] = [
             >
               <a
                 href={item.href}
-                class="w-full text-white text-3xl md:text-5xl lg:text-6xl font-bold hover:text-gray-200 transition-all duration-300 inline-block hover:scale-110 text-end"
+                class="w-full text-white text-3xl md:text-5xl lg:text-[48px] font-[700] hover:text-gray-200 transition-all duration-300 inline-block hover:scale-110 text-end"
               >
                 {item.label}
               </a>

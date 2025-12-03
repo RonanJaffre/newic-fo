@@ -1,0 +1,119 @@
+---
+import type { JSX } from "astro/jsx-runtime";
+
+// src/components/ui/VerticalBadge.astro
+
+interface Props extends JSX.HtmlHTMLAttributes {
+  position?: "left" | "right";
+  orientation?: "horizontal" | "vertical";
+}
+
+const {
+  position = "left",
+  orientation = "horizontal",
+  class: className,
+  ...rest
+} = Astro.props;
+---
+
+<div
+  {...rest}
+  class={`${orientation}-badge badge-${position} rounded-xl z-3 bg-primary text-primary fill-primary stoke-primary ${className}`}
+>
+  <span
+    class={`${orientation}-text text-${position} badge-text text-primary-foreground text-[14px] font-[700]`}
+    ><slot /></span
+  >
+  <svg
+    width="12"
+    height="12"
+    viewBox="0 0 12 12"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+    class={`${orientation}-corner corner-${position} corner`}
+  >
+    <path
+      d="M12 12C5.37258 12 8.69081e-07 6.62742 0 0L1.57361e-06 12L12 12Z"
+      fill="currentColor"></path>
+  </svg>
+  <div class={`bg-primary absolute mask ${orientation}-mask mask-${position}`}>
+  </div>
+</div>
+
+<style>
+  .vertical-badge {
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .horizontal-badge {
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .badge-left {
+    left: 0;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    transform: translateY(-100%);
+    padding: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .badge-right {
+    left: 0;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    transform: translateX(-100%);
+    padding: 1px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  .badge-text {
+    z-index: 2;
+  }
+  .vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+  }
+  .corner {
+    position: absolute;
+  }
+  .vertical-corner {
+    bottom: 0px;
+    right: 0px;
+    transform: scale(-1) translateY(-100%);
+  }
+  .horizontal-corner {
+    bottom: 0px;
+    right: 0px;
+    transform: translateX(100%);
+  }
+  .corner-left {
+  }
+  .corner-right {
+    transform: scale(-1) translateY(-100%);
+  }
+  .mask {
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+  }
+  .vertical-mask {
+    transform: translateX(100%);
+  }
+  .horizontal-mask {
+    transform: translateY(100%);
+  }
+  /* Variante sans rotation pour un style différent */
+  .badge-text-sideways {
+    transform: rotate(0deg);
+  }
+</style>

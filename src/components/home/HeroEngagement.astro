@@ -1,89 +1,92 @@
 ---
+import Container from "../layout/Container.astro";
 import Button from "../ui/Button.astro";
 
 // src/components/HeroEngagement.astro
 ---
 
-<section class="bg-white">
-  <div class="pt-4 pb-16">
-    <div class="flex flex-row gap-12 justify-between items-center">
-      <!-- Left Section - Engagement -->
-      <div class="w-[30%] flex flex-col justify-between h-[full] gap-y-8">
-        <div>
-          <h1
-            class="text-5xl lg:text-8xl font-bold text-secondary leading-none whitespace-nowrap z-2 relative"
-          >
-            La force de
-            <br />
-            l'engagement
-          </h1>
-
-          <p class="text-secondary text-lg max-w-md leading-none mt-3">
-            Culpa iste impedit alias rem at<br />
-            eum porro amet consequatur<br />
-            neque quibusdam
-          </p>
-        </div>
-        <Button>
-          <span class="flex items-center gap-2">
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="currentColor"
-              stroke="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
+<Container class="bg-primary-foreground">
+  <section class="bg-primary-foreground">
+    <div class="pt-4 pb-16">
+      <div class="flex flex-row gap-12 justify-between items-center">
+        <!-- Left Section - Engagement -->
+        <div class="w-[30%] flex flex-col justify-between h-[full] gap-y-8">
+          <div>
+            <h1
+              class="text-5xl lg:text-8xl font-bold text-secondary leading-none whitespace-nowrap z-2 relative"
             >
-              <path
-                d="M9 2.5H3C2.44772 2.5 2 2.94772 2 3.5V6.5C2 7.05228 2.44772 7.5 3 7.5H3.5C3.77614 7.5 4 7.72386 4 8V9.5L6.36304 7.60957C6.4517 7.53864 6.56185 7.5 6.67539 7.5H9C9.55228 7.5 10 7.05228 10 6.5V3.5C10 2.94772 9.55228 2.5 9 2.5Z"
-                stroke-linecap="round"
-                stroke-linejoin="round"></path>
-            </svg>
-            contacter vos élus
-          </span>
-        </Button>
-      </div>
+              La force de
+              <br />
+              l'engagement
+            </h1>
 
-      <div
-        class="w-[70%] aspect-[16/10] bg-image relative rounded-xl overflow-hidden shadow-2xl"
-      >
-        <!-- e-FO Card Overlay -->
-        <div class="relative p-4 flex items-center justify-end h-full">
-          <div
-            class="bg-gradient-to-br bg-primary text-white rounded-xl px-7 py-4 shadow-2xl w-[318px] h-full"
-          >
-            <h2 class="text-[80px] text-secondary font-[900] mb-2">e-FO</h2>
-
-            <p class="text-white/90 mb-1 leading-none">
-              La plateforme sécurisée où retrouver toutes vos informations
-              syndicale.
+            <p class="text-secondary text-lg max-w-md leading-none mt-3">
+              Culpa iste impedit alias rem at<br />
+              eum porro amet consequatur<br />
+              neque quibusdam
             </p>
+          </div>
+          <Button>
+            <span class="flex items-center gap-2">
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="currentColor"
+                stroke="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 2.5H3C2.44772 2.5 2 2.94772 2 3.5V6.5C2 7.05228 2.44772 7.5 3 7.5H3.5C3.77614 7.5 4 7.72386 4 8V9.5L6.36304 7.60957C6.4517 7.53864 6.56185 7.5 6.67539 7.5H9C9.55228 7.5 10 7.05228 10 6.5V3.5C10 2.94772 9.55228 2.5 9 2.5Z"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+              contacter vos élus
+            </span>
+          </Button>
+        </div>
 
-            <ul class="space-y-3 mb-8">
-              {
-                [
-                  "Accord d'entreprise",
-                  "Py de CSE",
-                  "Webinaires",
-                  "Formations",
-                  "Référent expert",
-                  "Levée de freins",
-                ].map((el) => (
-                  <li class="flex items-center gap-x-2 p-0 m-0">
-                    <span class="text-white/80 h-fit">•</span>
-                    <span class="text-sm leading-none">{el}</span>
-                  </li>
-                ))
-              }
-            </ul>
+        <div
+          class="w-[70%] aspect-[16/10] bg-image relative rounded-xl overflow-hidden shadow-2xl"
+        >
+          <!-- e-FO Card Overlay -->
+          <div class="relative p-4 flex items-center justify-end h-full">
+            <div
+              class="bg-gradient-to-br bg-primary text-white rounded-xl px-7 py-4 shadow-2xl w-[318px] h-full"
+            >
+              <h2 class="text-[80px] text-secondary font-[900] mb-2">e-FO</h2>
 
-            <Button color="secondary"> Mon compte e-FO </Button>
+              <p class="text-white/90 mb-1 leading-none">
+                La plateforme sécurisée où retrouver toutes vos informations
+                syndicale.
+              </p>
+
+              <ul class="space-y-3 mb-8">
+                {
+                  [
+                    "Accord d'entreprise",
+                    "Py de CSE",
+                    "Webinaires",
+                    "Formations",
+                    "Référent expert",
+                    "Levée de freins",
+                  ].map((el) => (
+                    <li class="flex items-center gap-x-2 p-0 m-0">
+                      <span class="text-white/80 h-fit">•</span>
+                      <span class="text-sm leading-none">{el}</span>
+                    </li>
+                  ))
+                }
+              </ul>
+
+              <Button color="secondary"> Mon compte e-FO </Button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</Container>
 
 <style>
   .bg-image {
