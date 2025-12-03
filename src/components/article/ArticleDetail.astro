@@ -37,8 +37,8 @@ const {
           ))
         }
       </div>
-      <div class="flex flex-row gap-x-3">
-        <div>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2">
           <span class="py-2 text-red-700 rounded-full text-sm">
             {tagDescription}
           </span>
@@ -88,7 +88,7 @@ const {
             </article>
           </div>
         </div>
-        <aside class="min-w-fit flex flex-col justify-between">
+        <aside class="lg:col-span-1 min-w-fit flex flex-col justify-between">
           {
             (summary ?? []).length !== 0 && (
               <div class="sticky top-24 flex flex-col border border-primary p-3 rounded-lg text-sm text-gray-600 min-w-fit">
