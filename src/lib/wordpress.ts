@@ -27,7 +27,7 @@ const articles: Article[] = Array.from(new Array(10)).map((_, index) => {
     title: "Praesent neque libero",
     excerpt: `Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis iure quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.`,
     image,
-    link: `/bloc/${slug}`,
+    link: `/blog/${slug}`,
     badge: "À la une",
     content,
     tags,
