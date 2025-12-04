@@ -41,7 +41,13 @@ export interface Article {
   imageHeight?: number;
 }
 
-export  interface Event {
+export interface Event {
+  id: string;
   date: string;
   title: string;
+  category: string;
+  location: string;
+  description: string;
+  image?: string;
+  link: string;
 }
