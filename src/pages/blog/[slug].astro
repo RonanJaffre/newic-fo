@@ -3,51 +3,47 @@ import ArticleDetail from "@/components/article/ArticleDetail.astro";
 import Container from "@/components/layout/Container.astro";
 import Layout from "@/components/layout/Layout.astro";
 import Badge from "@/components/ui/Badge.astro";
-import Button from "@/components/ui/Button.astro";
-import { getAllNews } from "@/lib/wordpress";
-import { getNewsBySlug } from "@/lib/wordpress";
+import { getAllPosts } from "@/lib/wordpress";
+import { getPostBySlug } from "@/lib/wordpress";
 
 // Astro component skeleton
 
 export async function getStaticPaths() {
-  const posts = await getAllNews(); // Récupère tous les articles
+  const posts = await getAllPosts(); // Récupère tous les articles
   return posts.map((post) => ({
     params: { slug: post.slug }, // Définit les slugs pour les routes dynamiques
   }));
 }
 
 const { slug } = Astro.params; // Récupère le slug depuis l'URL
-const post = await getNewsBySlug(slug ?? "");
+const post = await getPostBySlug(slug ?? "");
 
 if (!post) {
   throw new Error(`Article non trouvé pour le slug : ${slug}`);
 }
 
-const {
-  date,
-  excerpt,
-  title,
-  cover,
-  badge,
-} = post;
+const { date, excerpt, title, badge, featuredImage } = post;
 ---
 
 <Layout title={title} description={excerpt}>
   <Container class="bg-primary-foreground">
     <div class="content">
       <div class="w-full">
-        <!-- HEADER TITLE -->
         <div class="w-full pt-1 pb-1">
-          <h1 class="text-[64px] font-[800] font-bold text-secondary leading-none">
+          <h1
+            class="text-[64px] font-[800] font-bold text-secondary leading-none"
+          >
             {title}
           </h1>
           <div class="w-full flex flex-row justify-between">
-            <p class="text-[12px] font-[700] text-[#CFC5B4] mt-1">Actualités</p>
-            <p class="text-[12px] font-[700] text-[#CFC5B4] mt-1">{date}</p>
+            <p class="text-[12px] font-[700] text-primary-foreground mt-1">
+              Actualités
+            </p>
+            <p class="text-[12px] font-[700] text-primary-foreground mt-1">
+              {date}
+            </p>
           </div>
         </div>
-
-        <!-- MAIN IMAGE -->
         <div class="relative">
           {
             badge && (
@@ -60,7 +56,7 @@ const {
             )
           }
           <img
-            src={cover}
+            src={featuredImage}
             alt="cover"
             class="w-full h-[480px] object-cover rounded-xl"
           />
