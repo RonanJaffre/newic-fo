@@ -1,7 +1,7 @@
 ---
 import type { Article } from "@/types";
 import Button from "../ui/Button.astro";
-import { getAllPosts } from "@/lib/wordpress";
+import { getAllPosts, getAllEvents } from "@/lib/wordpress";
 import Badge from "../ui/Badge.astro";
 import BadgeCorner from "../ui/BadgeCorner.astro";
 import { Input } from "../ui/input";
@@ -9,27 +9,8 @@ import ArticleCard from "../ArticleCard.astro";
 
 // src/components/home/News.astro
 
-interface Event {
-  date: string;
-  title: string;
-}
-
-const upcomingEvents: Event[] = [
-  {
-    date: "01/01/2025",
-    title: "Titre d'évènement sur plusieurs lignes",
-  },
-  {
-    date: "01/01/2025",
-    title: "Titre d'évènement sur plusieurs lignes",
-  },
-  {
-    date: "01/01/2025",
-    title: "Titre d'évènement sur plusieurs lignes",
-  },
-];
-
 const articles = await getAllPosts(6);
+const events = await getAllEvents(6);
 
 const featuredArticle: Article = articles[0];
 ---
@@ -116,7 +97,7 @@ const featuredArticle: Article = articles[0];
 
         <div class="space-y-4 lg:mb-8 md:mb-1 mb-[2px]">
           {
-            upcomingEvents.map((event) => (
+            events.map((event) => (
               <div class="flex flex-row justify-center items-center lg:gap-x-3 lg:gap-y-3 lg:pb-3 md:gap-x-2 md:gap-y-2 md:pb-2 gap-x-[5px] gap-y-[5px] pb-[5px] border-b-1 border-[#DF877E]">
                 <Badge
                   variant="outlined"

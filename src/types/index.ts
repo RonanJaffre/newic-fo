@@ -40,3 +40,8 @@ export interface Article {
   imageWidth?: number;
   imageHeight?: number;
 }
+
+export  interface Event {
+  date: string;
+  title: string;
+}

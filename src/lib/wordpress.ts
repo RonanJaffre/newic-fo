@@ -1,4 +1,4 @@
-import type { Article } from "@/types";
+import type { Article, Event } from "@/types";
 
 const WORDPRESS_API_URL =
   import.meta.env.PUBLIC_WP_API_URL ||
@@ -155,6 +155,54 @@ export async function getPostBySlug(slug: string) {
   } catch (error) {
     console.error("Erreur lors de la récupération du post:", error);
     return null;
+  }
+}
+
+export async function getAllEvents(limit = 3) {
+  try {
+    console.log(
+      "Tentative de récupération depuis:",
+      `${WORDPRESS_API_URL}/events?per_page=${limit}&_embed`
+    );
+
+    // const response = await fetch(
+    //   `${WORDPRESS_API_URL}/posts?per_page=${limit}&_embed`
+    // );
+    // if (!response.ok) {
+    //   throw new Error(`Erreur API: ${response.status} ${response.statusText}`);
+    // }
+    // const posts = await response.json();
+
+    const response = await new Promise<Event[]>((resolve) => {
+      setTimeout(() => {
+        resolve([
+          {
+            date: "01/01/2025",
+            title: "Titre d'évènement sur plusieurs lignes",
+          },
+          {
+            date: "01/01/2025",
+            title: "Titre d'évènement sur plusieurs lignes",
+          },
+          {
+            date: "01/01/2025",
+            title: "Titre d'évènement sur plusieurs lignes",
+          },
+        ]);
+      }, Math.floor(Math.random() * 1001) + 2000);
+    });
+    const events = response;
+
+    // Vérifier si posts est un tableau
+    if (!Array.isArray(events)) {
+      console.error("L'API n'a pas retourné un tableau:", events);
+      return [];
+    }
+
+    return events;
+  } catch (error) {
+    console.error("Erreur lors de la récupération des posts:", error);
+    return [];
   }
 }
 
