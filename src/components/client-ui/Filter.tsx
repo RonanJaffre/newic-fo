@@ -5,9 +5,6 @@ import { useStore } from "@nanostores/react";
 
 const Filter = () => {
   const filterValue = useStore(filter);
-  console.log({
-    filterValue,
-  });
   return (
     <div className="flex gap-3 mb-8 flex-wrap">
       <div className="hidden ld:flex md:flex flex-row gap-x-3">

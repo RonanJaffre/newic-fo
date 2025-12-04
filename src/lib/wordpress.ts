@@ -48,7 +48,7 @@ const articles: Article[] = Array.from(new Array(10)).map((_, index) => {
   };
 });
 
-export async function getAllPosts(limit = 6) {
+export async function getAllPosts(limit = 6, type?: Article['type']) {
   try {
     console.log(
       "Tentative de récupération depuis:",
