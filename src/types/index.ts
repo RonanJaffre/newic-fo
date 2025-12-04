@@ -4,6 +4,7 @@ export interface Article {
   category: string;
   date: string;
   readingTime: string;
+  type: "FOLDER" | "NEWS";
   title?:
     | {
         rendered?: string;

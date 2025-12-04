@@ -30,6 +30,7 @@ const articles: Article[] = Array.from(new Array(10)).map((_, index) => {
     link: `/blog/${slug}`,
     badge: "À la une",
     content,
+    type: Math.random() < 0.5 ? "FOLDER" : "NEWS",
     tags,
     cover,
     tagDescription,

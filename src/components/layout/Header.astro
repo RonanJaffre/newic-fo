@@ -26,7 +26,7 @@ const currentPath = Astro.url.pathname;
       <!-- Bouton Menu -->
       <button
         id="menu-open-btn"
-        class="flex flex-row items-center gap-x-2 cursor-pointer hover:opacity-80 transition-opacity"
+        class="flex flex-row items-center gap-x-3 cursor-pointer hover:opacity-80 active:opacity-80 transition-opacity"
         aria-label="Ouvrir le menu"
       >
         <svg
@@ -35,54 +35,17 @@ const currentPath = Astro.url.pathname;
           viewBox="0 0 7 7"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          class="w-[10px] h-[10px]"
         >
           <path
             d="M0.5 6.5H6.5M0.5 0.5H6.5M0.5 3.5H6.5"
-            stroke="#400707"
+            stroke="var(--secondary)"
             stroke-linecap="round"
             stroke-linejoin="round"></path>
         </svg>
-        <span class="text-secondary font-medium">Menu</span>
+        <span class="text-secondary font-medium text-[20px]">Menu</span>
       </button>
-
-      <!-- Mobile Menu Button -->
-      <!-- <button 
-        class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
-        aria-label="Ouvrir le menu"
-        aria-expanded="false"
-        id="mobile-menu-button"
-      >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button> -->
     </div>
-
-    <!-- Mobile Menu (hidden by default) -->
-    <!-- <div 
-      class="hidden md:hidden mt-4 pb-4"
-      id="mobile-menu"
-      role="navigation"
-      aria-label="Navigation mobile"
-    >
-      <ul class="space-y-2">
-        {NAV_LINKS.map(link => (
-          <li>
-            <a 
-              href={link.href}
-              class={`block px-4 py-2 rounded-lg transition-colors ${
-                currentPath === link.href
-                  ? 'bg-blue-50 text-blue-600 font-medium'
-                  : 'text-gray-600 hover:bg-gray-100'
-              }`}
-              aria-current={currentPath === link.href ? 'page' : undefined}
-            >
-              {link.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div> -->
   </nav>
 </header>
 

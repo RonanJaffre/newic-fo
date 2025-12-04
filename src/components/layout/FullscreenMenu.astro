@@ -22,25 +22,31 @@ const menuItems: MenuItem[] = [
   id="fullscreen-menu"
   class="w-[0px] md:w-full lg-w-full fixed inset-0 bg-primary opacity-[0.5] via-red-500 to-orange-500 z-50 hidden opacity-0 transition-all md:transition-opacity lg:transition-opacity duration-500 translate-x-[100%]"
 >
-  <div class="container mx-auto px-4 py-3 h-full flex flex-col w-full">
+  <div
+    class="flex flex-col container mx-auto py-3 lg:px-6 md:px-3 px-[20px] h-full max-w-[1440px]"
+  >
     <!-- Header du menu -->
     <div class="flex items-center justify-between h-[113px]">
       <!-- Logo -->
-      <div class="flex items-center gap-3">
+      <a
+        href="/"
+        class="text-2xl font-bold text-gray-900 hover:text-blue-600 transition-colors"
+        aria-label="Retour à l'accueil"
+      >
         <LogoSecondary class="stroke-white text-white" />
-      </div>
+      </a>
 
       <!-- Bouton Close -->
       <button
         id="menu-close-btn"
-        class="text-white hover:text-gray-200 transition-colors flex items-center gap-2"
+        class="text-white hover:text-gray-200 active:text-gray-200 transition-colors flex items-center gap-x-3 cursor-pointer"
         aria-label="Fermer le menu"
       >
         <svg
-          class="w-3 h-3"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
+          class="w-[10px] h-[10px]"
         >
           <path
             stroke-linecap="round"
@@ -48,7 +54,7 @@ const menuItems: MenuItem[] = [
             stroke-width="2"
             d="M6 18L18 6M6 6l12 12"></path>
         </svg>
-        <span class="text-sm font-medium">Fermer</span>
+        <span class="text-sm font-medium text-[20px]">Fermer</span>
       </button>
     </div>
 
