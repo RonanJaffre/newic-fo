@@ -1,7 +1,7 @@
 ---
 import { getAllEvents } from "@/lib/wordpress";
 import BadgeCorner from "../ui/BadgeCorner.astro";
-import Button from "../ui/Button.astro";
+import Button from "../ui/Button";
 
 // src/components/events/EventsList.astro
 
@@ -80,7 +80,7 @@ const events = await getAllEvents(12);
 
                 {/* Bouton Lire plus */}
                 <a href={event.link}>
-                  <Button class="p-1">
+                  <Button className="p-1">
                     Inscription
                     {/* Lire plus
                   <svg

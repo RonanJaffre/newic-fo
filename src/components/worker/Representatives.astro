@@ -1,7 +1,7 @@
 ---
 import Badge from "../ui/Badge.astro";
 import BadgeCorner from "../ui/BadgeCorner.astro";
-import Button from "../ui/Button.astro";
+import Button from "../ui/Button";
 
 // src/components/home/Representatives.astro
 
@@ -112,18 +112,45 @@ const representatives: Representative[] = [
 <section class="py-16 bg-white">
   <div>
     <div class="flex items-center justify-between mb-10">
-      <h2 class="text-[14px] font-[700] text-card-foreground">Représentant(e)s</h2>
+      <h2 class="text-[14px] font-[700] text-card-foreground">
+        Représentant(e)s
+      </h2>
       <button
         class="flex items-center gap-2 text-gray-700 hover:text-primary transition-colors"
         aria-label="Menu des filtres"
       >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M14 6H18V10H14V6Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M6 6H10V10H6V6Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M14 14H18V18H14V14Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M6 14H10V18H6V14Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M14 6H18V10H14V6Z"
+            stroke="black"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+          <path
+            d="M6 6H10V10H6V6Z"
+            stroke="black"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+          <path
+            d="M14 14H18V18H14V14Z"
+            stroke="black"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+          <path
+            d="M6 14H10V18H6V14Z"
+            stroke="black"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
         </svg>
-
       </button>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
@@ -161,13 +188,15 @@ const representatives: Representative[] = [
                     {rep.badge}
                   </Badge>
                 )}
-                
+
                 <div class="flex flex-row gap-1 lg:flex-col md:flex-col lg:items-start md:items-start items-center w-full justify-between">
                   <p class="text-[12px] font-[700] line-clamp-3 leading-none">
                     {rep.company}
                   </p>
                   <a href={"/"}>
-                    <Button class="p-1 h-[18px] text-[12px]">Contact</Button>
+                    <Button className="p-1 h-[18px] text-[12px]">
+                      Contact
+                    </Button>
                   </a>
                 </div>
               </div>

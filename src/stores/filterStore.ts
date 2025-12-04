@@ -11,7 +11,7 @@ export const filter = atom<Filter>({
 export function setFilter(value: Filter) {
   filter.set({
     ...filter.get(),
-    ...filter,
+    ...value,
   });
 }
 

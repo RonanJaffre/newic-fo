@@ -1,5 +1,5 @@
 ---
-import Button from "../ui/Button.astro";
+import Button from "../ui/Button";
 
 // src/components/home/News.astro
 
@@ -54,7 +54,7 @@ const regions: string[] = [
     <div class="flex flex-row gap-x-2 w-full container mx-auto flex-wrap">
       {regions.map((i) => <span class="font-[400] text-[14px]">{i}</span>)}
     </div>
-    <Button class="h-fit">
+    <Button className="h-fit">
       <svg
         width="12"
         height="12"
