@@ -15,25 +15,25 @@ const defends = [
     id: "1",
     title: "Une vraie visibilité sur nos emplois,",
     description: "nos compétences et individuellement.",
-    image: "/images/about/defend-1.jpg",
+    image: "../images/7aadc5cc831bb18cd922621670c7fb8c5b83e63d.jpg",
   },
   {
     id: "2",
     title: "L'accès à la formation et au développement personnel",
     description: "dans son métier.",
-    image: "/images/about/defend-2.jpg",
+    image: "../images/c22e2a05efee0441525e8b3723f79c8fd940627d-min.jpg",
   },
   {
     id: "3",
     title: "Des relations de travail bienveillantes et ouvertes",
     description: "au dialogue constructif.",
-    image: "/images/about/defend-3.jpg",
+    image: "../images/efd8f8f2f4b502bf59fe37e2908c4fee9edce7cf-min.jpg",
   },
   {
     id: "4",
     title: "Un environnement de travail sain",
     description: "et des conditions de travail décentes.",
-    image: "/images/about/defend-4.jpg",
+    image: "../images/6ab530be3b5b331dddcf755efccea6cbb93bab64-min.jpg",
   },
 ];
 
@@ -84,18 +84,13 @@ const fonctionsSyndicales = [
               </p>
               <p class="text-right"><b>David Muzelle</b></p>
               <!-- Image avec logo FO -->
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                 <div
-                  class="relative h-64 bg-gray-200 rounded-2xl overflow-hidden flex items-end justify-center p-8"
+                  class="relative bg-gray-200 rounded-2xl overflow-hidden flex items-end justify-center p-8 bg-cover bg-repeat max-w-[240px] aspect-[1/1]"
+                  style="background-image: url('../images/60646c5bcab03b7e39f1ebda2b48c8ff26ec8e99.jpg');"
                 >
-                  <div
-                    class="w-48 h-48 bg-primary/90 rounded-xl flex items-center justify-center transform rotate-6"
-                  >
-                    <span class="text-white text-8xl font-bold">FO</span>
-                  </div>
                 </div>
-
-                <div class="space-y-4 text-gray-700">
+                <div class="space-y-4 text-gray-700 md:col-span-2">
                   <p>
                     FO Groupe Bouygues, est le syndicat référent et partenaire
                     du Groupe Bouygues. Un syndicat historique, qui depuis 1977,
@@ -166,26 +161,14 @@ const fonctionsSyndicales = [
 
               <!-- Grille des défenses -->
               <div
-                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8"
+                class="flex flex-row flex-wrap gap-3 mt-4"
               >
                 {
                   defends.map((item) => (
-                    <div class="relative h-64 rounded-2xl overflow-hidden group">
-                      <div class="absolute inset-0 bg-gray-200 flex items-center justify-center">
-                        <svg
-                          class="w-16 h-16 text-gray-400"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="1.5"
-                            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                          />
-                        </svg>
-                      </div>
+                    <div
+                      class="relative h-[180px] w-[180px] rounded-2xl overflow-hidden group bg-cover bg-repeat"
+                      style={`background-image: url("${item.image}")`}
+                    >
                       <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end p-6">
                         <div class="text-white">
                           <h4 class="font-bold text-sm mb-1">{item.title}</h4>
@@ -237,23 +220,9 @@ const fonctionsSyndicales = [
 
               <!-- Image drapeau FO -->
               <div
-                class="relative h-80 bg-gray-200 rounded-2xl overflow-hidden"
+                class="relative h-80 rounded-2xl overflow-hidden bg-cover bg-repeat"
+                style="background-image: url('../images/8bc7f923ac3dbaed7386f77d47e995e40a18efcd-min.jpg');"
               >
-                <div class="absolute inset-0 flex items-center justify-center">
-                  <svg
-                    class="w-24 h-24 text-gray-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
-                      d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"
-                    ></path>
-                  </svg>
-                </div>
               </div>
             </article>
 

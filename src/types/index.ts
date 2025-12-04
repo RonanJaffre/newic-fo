@@ -5,24 +5,12 @@ export interface Article {
   date: string;
   readingTime: string;
   type: "FOLDER" | "NEWS";
-  title?:
-    | {
-        rendered?: string;
-      }
-    | string;
-  excerpt:
-    | {
-        rendered?: string;
-      }
-    | string;
+  title?: any;
+  excerpt: any;
   image: string;
   link: string;
   badge?: string;
-  content?:
-    | {
-        rendered?: string;
-      }
-    | string;
+  content?: any;
   tags?: string[];
   summary?: string[];
   cover?: string;
