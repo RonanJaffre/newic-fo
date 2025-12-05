@@ -48,6 +48,117 @@ const articles: Article[] = Array.from(new Array(12)).map((_, index) => {
   };
 });
 
+const eventList = [
+  {
+    id: "1",
+    slug: "slug-1",
+    date: "01/01/2025",
+    title: "Titre d'évènement sur plusieurs lignes",
+    category: "Bouygues Telecom",
+    location: "Île de France",
+    description:
+      "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
+    image,
+    link: "/events/1",
+  },
+  {
+    id: "2",
+    slug: "slug-2",
+    date: "01/01/2025",
+    title: "Titre d'évènement sur plusieurs lignes",
+    category: "Bouygues Telecom",
+    location: "Île de France",
+    description:
+      "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
+    image,
+    link: "/events/2",
+  },
+  {
+    id: "3",
+    slug: "slug-3",
+    date: "01/01/2025",
+    title: "Titre d'évènement sur plusieurs lignes",
+    category: "Bouygues Telecom",
+    location: "Île de France",
+    description:
+      "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
+    image,
+    link: "/events/3",
+  },
+  {
+    id: "4",
+    slug: "slug-4",
+    date: "01/01/2025",
+    title: "Titre d'évènement sur plusieurs lignes",
+    category: "Bouygues Telecom",
+    location: "Île de France",
+    description:
+      "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
+    image,
+    link: "/events/4",
+  },
+  {
+    id: "5",
+    slug: "slug-5",
+    date: "01/01/2025",
+    title: "Titre d'évènement sur plusieurs lignes",
+    category: "Bouygues Telecom",
+    location: "Île de France",
+    description:
+      "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
+    image,
+    link: "/events/5",
+  },
+  {
+    id: "6",
+    slug: "slug-6",
+    date: "01/01/2025",
+    title: "Titre d'évènement sur plusieurs lignes",
+    category: "Bouygues Telecom",
+    location: "Île de France",
+    description:
+      "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
+    image,
+    link: "/events/6",
+  },
+  {
+    id: "7",
+    slug: "slug-7",
+    date: "01/01/2025",
+    title: "Titre d'évènement sur plusieurs lignes",
+    category: "Bouygues Telecom",
+    location: "Île de France",
+    description:
+      "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
+    image,
+    link: "/events/7",
+  },
+  {
+    id: "8",
+    slug: "slug-8",
+    date: "01/01/2025",
+    title: "Titre d'évènement sur plusieurs lignes",
+    category: "Bouygues Telecom",
+    location: "Île de France",
+    description:
+      "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
+    image,
+    link: "/events/8",
+  },
+  {
+    id: "9",
+    slug: "slug-9",
+    date: "01/01/2025",
+    title: "Titre d'évènement sur plusieurs lignes",
+    category: "Bouygues Telecom",
+    location: "Île de France",
+    description:
+      "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
+    image,
+    link: "/events/9",
+  },
+];
+
 export async function getAllPosts(
   limit = 6,
   params?: Record<string, string | null>
@@ -162,6 +273,37 @@ export async function getPostBySlug(slug: string) {
   }
 }
 
+export async function getEventBySlug(slug: string) {
+  try {
+    // const response = await fetch(
+    //   `${WORDPRESS_API_URL}/posts?slug=${slug}&_embed`
+    // );
+    // if (!response.ok) {
+    //   throw new Error(`Erreur API: ${response.status} ${response.statusText}`);
+    // }
+    // const posts = await response.json();
+    // const post = posts[0]; // L'API retourne un tableau même pour un seul article
+
+    const posts = await new Promise<Event[]>((resolve) => {
+      setTimeout(() => {
+        resolve(eventList.filter((i) => i.id === slug));
+      }, Math.floor(Math.random() * 1001) + 2000);
+    });
+    const post = posts[0]; // L'API retourne un tableau même pour un seul article
+
+    if (!post) {
+      return null;
+    }
+
+    return {
+      ...post,
+    };
+  } catch (error) {
+    console.error("Erreur lors de la récupération du post:", error);
+    return null;
+  }
+}
+
 export async function getAllEvents(limit = 3) {
   try {
     console.log(
@@ -182,109 +324,7 @@ export async function getAllEvents(limit = 3) {
     // Données de démonstration - à remplacer par vos vraies données
     const response = await new Promise<Event[]>((resolve) => {
       setTimeout(() => {
-        resolve(
-          [
-            {
-              id: "1",
-              date: "01/01/2025",
-              title: "Titre d'évènement sur plusieurs lignes",
-              category: "Bouygues Telecom",
-              location: "Île de France",
-              description:
-                "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
-              image,
-              link: "/events/1",
-            },
-            {
-              id: "2",
-              date: "01/01/2025",
-              title: "Titre d'évènement sur plusieurs lignes",
-              category: "Bouygues Telecom",
-              location: "Île de France",
-              description:
-                "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
-              image,
-              link: "/events/2",
-            },
-            {
-              id: "3",
-              date: "01/01/2025",
-              title: "Titre d'évènement sur plusieurs lignes",
-              category: "Bouygues Telecom",
-              location: "Île de France",
-              description:
-                "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
-              image,
-              link: "/events/3",
-            },
-            {
-              id: "4",
-              date: "01/01/2025",
-              title: "Titre d'évènement sur plusieurs lignes",
-              category: "Bouygues Telecom",
-              location: "Île de France",
-              description:
-                "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
-              image,
-              link: "/events/4",
-            },
-            {
-              id: "5",
-              date: "01/01/2025",
-              title: "Titre d'évènement sur plusieurs lignes",
-              category: "Bouygues Telecom",
-              location: "Île de France",
-              description:
-                "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
-              image,
-              link: "/events/5",
-            },
-            {
-              id: "6",
-              date: "01/01/2025",
-              title: "Titre d'évènement sur plusieurs lignes",
-              category: "Bouygues Telecom",
-              location: "Île de France",
-              description:
-                "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
-              image,
-              link: "/events/6",
-            },
-            {
-              id: "7",
-              date: "01/01/2025",
-              title: "Titre d'évènement sur plusieurs lignes",
-              category: "Bouygues Telecom",
-              location: "Île de France",
-              description:
-                "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
-              image,
-              link: "/events/7",
-            },
-            {
-              id: "8",
-              date: "01/01/2025",
-              title: "Titre d'évènement sur plusieurs lignes",
-              category: "Bouygues Telecom",
-              location: "Île de France",
-              description:
-                "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
-              image,
-              link: "/events/8",
-            },
-            {
-              id: "9",
-              date: "01/01/2025",
-              title: "Titre d'évènement sur plusieurs lignes",
-              category: "Bouygues Telecom",
-              location: "Île de France",
-              description:
-                "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
-              image,
-              link: "/events/9",
-            },
-          ].slice(0, limit)
-        );
+        resolve(eventList.slice(0, limit));
       }, Math.floor(Math.random() * 1001) + 2000);
     });
     const events = response;

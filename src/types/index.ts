@@ -32,6 +32,7 @@ export interface Article {
 
 export interface Event {
   id: string;
+  slug: string;
   date: string;
   title: string;
   category: string;
