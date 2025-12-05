@@ -1,0 +1,17 @@
+---
+import { getFilterParams } from "@/lib/utils";
+import ArticleCard from "../ArticleCard.astro";
+import { getAllPosts } from "@/lib/wordpress";
+
+export const prerender = false;
+
+const params = getFilterParams(Astro.url.searchParams);
+
+const articles = await getAllPosts(12, params);
+---
+
+<div
+  class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 gap-6 mt-6"
+>
+  {articles.map((article) => <ArticleCard article={article} />)}
+</div>

@@ -18,10 +18,10 @@ const summary = [
   "Duis ac aliquam mauris.",
 ];
 
-const articles: Article[] = Array.from(new Array(10)).map((_, index) => {
+const articles: Article[] = Array.from(new Array(50)).map((_, index) => {
   const slug = `${index + 1}`;
   return {
-    id: slug,
+    id: `slug-${slug}`,
     category: "Bouygues Telecom",
     date: "03 novembre 2025",
     title: "Praesent neque libero",
@@ -48,7 +48,10 @@ const articles: Article[] = Array.from(new Array(10)).map((_, index) => {
   };
 });
 
-export async function getAllPosts(limit = 6, type?: Article['type']) {
+export async function getAllPosts(
+  limit = 6,
+  params?: Record<string, string | null>
+) {
   try {
     console.log(
       "Tentative de récupération depuis:",
@@ -63,6 +66,7 @@ export async function getAllPosts(limit = 6, type?: Article['type']) {
     // }
     // const posts = await response.json();
 
+    
     const response = await new Promise<Article[]>((resolve) => {
       setTimeout(() => {
         resolve(articles);

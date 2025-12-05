@@ -2,23 +2,8 @@
 // src/components/layout/Footer.astro
 import LogoSecondary from "../logo/LogoSecondary.astro";
 import Button from "../ui/Button";
-import { SEO } from "@/lib/constants";
+import { FOOTER_LINKS, SEO } from "@/lib/constants";
 import PreFooter from "./PreFooter.astro";
-
-const year = new Date().getFullYear();
-
-const footerLinks = {
-  accueil: [
-    { label: "Qui sommes-nous ?", href: "/about" },
-    { label: "Vos représentants", href: "/worker" },
-    { label: "Pourquoi ouvrir un compte ?", href: "/why-account" },
-  ],
-  liensUtiles: [
-    { label: "Plan du site", href: "/site-plan" },
-    { label: "Mentions légales", href: "/legal-notice" },
-    { label: "Conditions générales", href: "/terms-of-use" },
-  ],
-};
 ---
 
 <footer class="bg-primary-foreground md:px-15 md:py-10 p-[20px]">
@@ -107,7 +92,7 @@ const footerLinks = {
         <h3 class="font-bold text-base mb-2">Accueil</h3>
         <ul class="space-y-[1px]">
           {
-            footerLinks.accueil.map((link) => (
+            FOOTER_LINKS.accueil.map((link) => (
               <li>
                 <a
                   href={link.href}
@@ -159,7 +144,7 @@ const footerLinks = {
         <h3 class="font-bold text-secondary text-base mb-2">Liens utiles</h3>
         <ul class="space-y-[1px]">
           {
-            footerLinks.liensUtiles.map((link) => (
+            FOOTER_LINKS.liensUtiles.map((link) => (
               <li>
                 <a
                   href={link.href}

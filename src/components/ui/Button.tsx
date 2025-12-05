@@ -42,7 +42,7 @@ const Button = (props: Props) => {
   return (
     <button
       {...rest}
-      className={`inline-flex items-center justify-center gap-2 whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0  px-4 py-1 rounded-3xl font-[700] transition-shadow w-fit hover:shadow-lg flex flex-row items-center gap-x-1 cusrsor-pointer ${classes[color][variant]} ${sizes[size]} ${className}`}
+      className={`inline-flex items-center justify-center gap-2 whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0  px-4 py-1 rounded-3xl font-[700] transition-shadow w-fit hover:shadow-lg flex flex-row items-center gap-x-1 cursor-pointer ${classes[color][variant]} ${sizes[size]} ${className}`}
     >
       {children}
     </button>

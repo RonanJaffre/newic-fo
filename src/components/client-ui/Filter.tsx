@@ -1,39 +1,58 @@
 import { filter, setFilter } from "@/stores/filterStore";
 import Button from "../ui/Button";
 import { Input } from "../ui/input";
-import { useStore } from "@nanostores/react";
+import { useState } from "react";
 
 const Filter = () => {
-  const filterValue = useStore(filter);
+  const params = new URLSearchParams(window.location.search);
+  const type = params.get("type");
+  const company = params.get("company");
+  const [search, setSearch] = useState(params.get("search") ?? "");
+
+  const handleSubmit = (type: string) => {
+    const params = [
+      {
+        key: "company",
+        value: company,
+      },
+      {
+        key: "type",
+        value: type,
+      },
+      {
+        key: "search",
+        value: search,
+      },
+    ];
+    window.location.href = `${window.location.pathname}?${params
+      .filter((i) => i.value != null)
+      .map((i) => `${i.key}=${i.value}`)
+      .join("&")}`;
+  };
+
   return (
     <div className="flex gap-3 mb-8 flex-wrap">
       <div className="hidden ld:flex md:flex flex-row gap-x-3">
         <Button
-          variant={filterValue.type === "ALL" ? "contained" : "outlined"}
+          variant={type == null || type === "ALL" ? "contained" : "outlined"}
           onClick={() => {
-            setFilter({
-              type: "ALL",
-            });
+            handleSubmit("ALL");
           }}
         >
           Toutes
         </Button>
         <Button
-          variant={filterValue.type === "NEW" ? "contained" : "outlined"}
+          variant={type === "NEW" ? "contained" : "outlined"}
           onClick={() => {
-            setFilter({
-              type: "NEW",
-            });
+            handleSubmit("NEW");
           }}
         >
           Actualités
         </Button>
         <Button
-          variant={filterValue.type === "FOLDER" ? "contained" : "outlined"}
+          variant={type === "FOLDER" ? "contained" : "outlined"}
           onClick={() => {
-            setFilter({
-              type: "FOLDER",
-            });
+            handleSubmit("FOLDER");
           }}
         >
           Dossiers
@@ -55,9 +74,21 @@ const Filter = () => {
           ></path>
         </svg>
 
-        <Input placeholder="Recherche sur le site..." />
+        <Input
+          placeholder="Recherche sur le site..."
+          value={search}
+          onChange={(e) => {
+            setSearch(e.target.value);
+          }}
+        />
       </div>
-      <Button variant="contained" color="secondary">
+      <Button
+        variant="contained"
+        color="secondary"
+        onClick={() => {
+          handleSubmit(type ?? "ALL");
+        }}
+      >
         <svg
           width="12"
           height="12"

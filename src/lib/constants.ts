@@ -1,7 +1,7 @@
-export const SITE_NAME = 'Starter Kit Blog'
-export const SITE_DESCRIPTION = 'Ceci est starter kit de blog.'
-export const SITE_URL = 'https://monblog.com'
+export const SITE_NAME = "Groupe Bouygues";
+export const SITE_DESCRIPTION = "Groupe Bouygues";
 
+export const filterKey = ["type", "search", "company"];
 export const SEO = {
   adress:
     "1 avenue Eugène Freyssinet- Guyancourt 78061 Saint-Quentin-en-Yvelines",
@@ -9,22 +9,28 @@ export const SEO = {
   youtube: "https://www.youtube.com/@fogroupebouygues2897",
 };
 export const NAV_LINKS = [
-  { href: '/', label: 'Accueil' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/about', label: 'À propos' },
-  { href: '/services', label: 'Services' }, 
-  { href: '/contact', label: 'Contact' },   
-] as const
+  { label: "Actualités", href: "/#news-section" },
+  { label: "Qui sommes-nous ?", href: "/about" },
+  { label: "Vos représentants", href: "/worker" },
+  { label: "Pourquoi ouvrir un compte ?", href: "/why-account" },
+  { label: "Mon compte e-FO", href: "/login" },
+] as const;
 
-export const FOOTER_LINKS = [
-  { label: 'Accueil', href: '/' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'À propos', href: '/about' },
-  { label: 'Contact', href: '/contact' },
-];
+export const FOOTER_LINKS = {
+  accueil: [
+    { label: "Qui sommes-nous ?", href: "/about" },
+    { label: "Vos représentants", href: "/worker" },
+    { label: "Pourquoi ouvrir un compte ?", href: "/why-account" },
+  ],
+  liensUtiles: [
+    { label: "Plan du site", href: "/site-plan" },
+    { label: "Mentions légales", href: "/legal-notice" },
+    { label: "Conditions générales", href: "/terms-of-use" },
+  ],
+};
 
 export const SOCIAL_LINKS = [
-  { label: 'Twitter', href: 'https://twitter.com', icon: 'twitter' },
-  { label: 'GitHub', href: 'https://github.com', icon: 'github' },
-  { label: 'LinkedIn', href: 'https://linkedin.com', icon: 'linkedin' },
+  { label: "Twitter", href: "https://twitter.com", icon: "twitter" },
+  { label: "GitHub", href: "https://github.com", icon: "github" },
+  { label: "LinkedIn", href: "https://linkedin.com", icon: "linkedin" },
 ];
