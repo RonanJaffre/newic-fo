@@ -8,9 +8,7 @@ import Equans from "../logo/Equans.astro";
 import Tfi from "../logo/Tfi.astro";
 ---
 
-<section
-  class="flex flex-row justify-between w-full flex-wrap gap-1"
->
+<section class="flex flex-row justify-between w-full flex-wrap gap-1">
   {
     [
       <BouyguesBatiment />,
@@ -20,6 +18,10 @@ import Tfi from "../logo/Tfi.astro";
       <Colas />,
       <Equans />,
       <Tfi />,
-    ].map((i) => i)
+    ].map((i) => (
+      <button class="hover:shadow-sm rounded-full transition-shadow cursor-pointer duration-400">
+        {i}
+      </button>
+    ))
   }
 </section>
