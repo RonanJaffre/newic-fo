@@ -18,7 +18,7 @@ const summary = [
   "Duis ac aliquam mauris.",
 ];
 
-const articles: Article[] = Array.from(new Array(50)).map((_, index) => {
+const articles: Article[] = Array.from(new Array(12)).map((_, index) => {
   const slug = `slug-${index + 1}`;
   return {
     id: slug,
