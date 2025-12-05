@@ -19,9 +19,9 @@ const summary = [
 ];
 
 const articles: Article[] = Array.from(new Array(50)).map((_, index) => {
-  const slug = `${index + 1}`;
+  const slug = `slug-${index + 1}`;
   return {
-    id: `slug-${slug}`,
+    id: slug,
     category: "Bouygues Telecom",
     date: "03 novembre 2025",
     title: "Praesent neque libero",
@@ -66,7 +66,6 @@ export async function getAllPosts(
     // }
     // const posts = await response.json();
 
-    
     const response = await new Promise<Article[]>((resolve) => {
       setTimeout(() => {
         resolve(articles);

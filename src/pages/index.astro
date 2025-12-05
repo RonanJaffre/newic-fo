@@ -1,9 +1,9 @@
 ---
 import Layout from "../components/layout/Layout.astro";
 import HeroEngagement from "@/components/home/HeroEngagement.astro";
-import Partner from "@/components/home/Partner.astro";
+import Partner from "@/components/home/Partner";
 import News from "@/components/home/News.astro";
-import Region from "@/components/home/Region.astro";
+import Region from "@/components/home/Region";
 import Container from "@/components/layout/Container.astro";
 
 // Récupération des articles
@@ -13,8 +13,8 @@ import Container from "@/components/layout/Container.astro";
   <HeroEngagement />
   <Container>
     <div class="hidden lg:flex md:flex flex-col">
-      <Partner />
-      <Region />
+      <Partner client:only />
+      <Region client:only />
     </div>
     <News />
   </Container>

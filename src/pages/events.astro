@@ -1,7 +1,7 @@
 ---
 import Layout from "@/components/layout/Layout.astro";
-import Partner from "@/components/home/Partner.astro";
-import Region from "@/components/home/Region.astro";
+import Partner from "@/components/home/Partner";
+import Region from "@/components/home/Region";
 import EventsList from "@/components/events/EventsList.astro";
 import SubHeader from "@/components/SubHeader.astro";
 import Container from "@/components/layout/Container.astro";
@@ -18,8 +18,8 @@ import Container from "@/components/layout/Container.astro";
     />
   </Container>
   <Container>
-    <Partner />
-    <Region />
+    <Partner client:only />
+    <Region client:only />
     <EventsList />
   </Container>
 </Layout>
