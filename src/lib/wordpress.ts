@@ -59,7 +59,6 @@ const eventList = [
     description:
       "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
     image,
-    link: "/events/1",
   },
   {
     id: "2",
@@ -71,7 +70,6 @@ const eventList = [
     description:
       "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
     image,
-    link: "/events/2",
   },
   {
     id: "3",
@@ -83,7 +81,6 @@ const eventList = [
     description:
       "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
     image,
-    link: "/events/3",
   },
   {
     id: "4",
@@ -95,7 +92,6 @@ const eventList = [
     description:
       "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
     image,
-    link: "/events/4",
   },
   {
     id: "5",
@@ -107,7 +103,6 @@ const eventList = [
     description:
       "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
     image,
-    link: "/events/5",
   },
   {
     id: "6",
@@ -119,7 +114,6 @@ const eventList = [
     description:
       "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
     image,
-    link: "/events/6",
   },
   {
     id: "7",
@@ -131,7 +125,6 @@ const eventList = [
     description:
       "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
     image,
-    link: "/events/7",
   },
   {
     id: "8",
@@ -143,7 +136,6 @@ const eventList = [
     description:
       "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
     image,
-    link: "/events/8",
   },
   {
     id: "9",
@@ -155,7 +147,6 @@ const eventList = [
     description:
       "Culpa iste impedit alias rem at eum porro amet consequatur neque quibusdam facilis ture quod beatae vel exercitationem, veniam libero omnis delectus recusandae molestias saepe.",
     image,
-    link: "/events/9",
   },
 ];
 
@@ -286,7 +277,7 @@ export async function getEventBySlug(slug: string) {
 
     const posts = await new Promise<Event[]>((resolve) => {
       setTimeout(() => {
-        resolve(eventList.filter((i) => i.id === slug));
+        resolve(eventList.filter((i) => i.slug === slug));
       }, Math.floor(Math.random() * 1001) + 2000);
     });
     const post = posts[0]; // L'API retourne un tableau même pour un seul article

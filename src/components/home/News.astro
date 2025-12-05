@@ -38,7 +38,7 @@ const featuredArticle: Article = articles[0];
         <div class="space-y-4 lg:mb-8 md:mb-1 mb-[2px]">
           {
             events.map((event) => (
-              <a href={event.link}>
+              <a href={`/event/${event.slug}`}>
                 <div class="flex flex-row justify-center items-center lg:gap-x-3 lg:gap-y-3 lg:pb-3 md:gap-x-2 md:gap-y-2 md:pb-2 gap-x-[5px] gap-y-[5px] pb-[5px] border-b-1 border-[#DF877E]">
                   <Badge
                     variant="outlined"

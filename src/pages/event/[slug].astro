@@ -1,5 +1,6 @@
 ---
 import ArticleDetail from "@/components/article/ArticleDetail.astro";
+import EventDetail from "@/components/article/EventDetail.astro";
 import Container from "@/components/layout/Container.astro";
 import Layout from "@/components/layout/Layout.astro";
 import Badge from "@/components/ui/Badge.astro";
@@ -57,7 +58,7 @@ const { date, title, image } = post;
   <Container>
     <div class="content container">
       <div class="mx-auto flex items-center justify-between mt-4">
-        <ArticleDetail article={post} />
+        <EventDetail article={post} />
       </div>
     </div>
   </Container>
